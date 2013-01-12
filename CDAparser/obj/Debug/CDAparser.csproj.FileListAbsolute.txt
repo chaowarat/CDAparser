@@ -1,0 +1,5 @@
+C:\Users\CCC\Documents\Visual Studio 2010\Projects\CDAparser\CDAparser\bin\CDAparser.dll
+C:\Users\CCC\Documents\Visual Studio 2010\Projects\CDAparser\CDAparser\bin\CDAparser.pdb
+C:\Users\CCC\Documents\Visual Studio 2010\Projects\CDAparser\CDAparser\obj\Debug\CDAparser.dll
+C:\Users\CCC\Documents\Visual Studio 2010\Projects\CDAparser\CDAparser\obj\Debug\CDAparser.pdb
+C:\Users\CCC\Documents\Visual Studio 2010\Projects\CDAparser\CDAparser\obj\Debug\CDAparser.csprojResolveAssemblyReference.cache

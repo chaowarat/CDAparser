@@ -1,0 +1,47 @@
+<ClinicalDocument>	
+	<recordTarget>
+		<patientRole>
+			<id extension="1659900384680" root="2.16.840.1.113883.19.5"/>
+			<addr>
+				<LiveHomeStatus>1</LiveHomeStatus>
+				<LiveHouseNumber>2222 Home Street</LiveHouseNumber>
+				<LiveMooNumber>2</LiveMooNumber>  
+				<LiveVillageName>....</LiveVillageName>
+				<LiveAlley>.....</LiveAlley>
+				<LiveStreetName>....</LiveStreetName>
+				<LiveTumbon>440101</LiveTumbon>	<!--Tumbon Code-->
+				<LiveCity>4401</LiveCity>	<!--City Code-->
+				<LiveProvince>44</LiveProvince>	<!--Province Code-->
+				<LivePostCode>.....</LivePostCode>
+				<CensusHouseNumber>....</CensusHouseNumber>
+				<CensusMooNumber>....</>
+				<CensusVillageName>....</>
+				<CensusAlley>....</>
+				<CensusStreetName>.....</>
+				<CensusTumbon>440101</CensusTumbon>	<!--Tumbon Code-->
+				<CensusCity>4401</CensusCity>	<!--City Code-->
+				<CensusProvince>44</CensusProvince>	<!--Province Code-->
+				<CensusMoveInDate>20120501</CensusMoveInDate> <!--Value : YYYYMMDD-->
+				<CensusMoveOutDate></CensusMoveOutDate>	<!--Value : YYYYMMDD-->
+				<CensusMoveOutReason></CensusMoveOutReason>
+			</addr>
+			<HomePhone value="tel:+1-555-555-2004" use="HP"/>
+			<Mobile value="0824467460"/>
+			<patient>
+				<name>
+					<title>1</title>
+					<given>Jirawat</given>
+					<family>Everyman</family>
+				</name>
+				<administrativeGenderCode code="M" codeSystem="2.16.840.1.113883.5.1"/>
+				<birthTime value="19720924"/> <!--Format Date is YYYYMMDD -->
+				<subWelfareID value=""/> <!--Code of Subwelfare-->
+				<bloodType value=""/>
+				<nation value=""/>
+				<race value=""/>
+				<religion value=""/>
+				<foreigner value=""/>
+			</patient>
+	</recordTarget>
+</ClinicalDocument>	
+	
