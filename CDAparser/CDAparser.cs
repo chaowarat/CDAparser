@@ -75,6 +75,7 @@ namespace CDAparser
         private static String CDAauthenticatorAssignedEntityClassCode = "authenticator/assignedEntity/@classCode";
         private static String CDAauthenticatorAssignedEntityIdExtension = "authenticator/assignedEntity/id/@extension";
         private static String CDAauthenticatorAssignedEntityIdRoot = "authenticator/assignedEntity/id/@root";
+        private static String CDAauthenticatorAssignedEntityIdHostIDextension = "authenticator/assignedEntity/hostID/@extension";
         private static String CDAauthenticatorAssignedEntityAssignedPersonNameGiven = "authenticator/assignedEntity/assignedPerson/name/given";
         private static String CDAauthenticatorAssignedEntityAssignedPersonNameFamily = "authenticator/assignedEntity/assignedPerson/name/family";
         private static String CDAauthenticatorAssignedEntityAssignedPersonNameSuffix = "authenticator/assignedEntity/assignedPerson/name/suffix";
@@ -783,6 +784,16 @@ namespace CDAparser
         public void setCDAauthenticatorAssignedEntityIdRoot(string value)
         {
             setInnerTextSingle(CDAauthenticatorAssignedEntityIdRoot, value);
+        }
+
+        public string getCDAauthenticatorAssignedEntityIdHostIDextension()
+        {
+            return getInnerTextSingle(CDAauthenticatorAssignedEntityIdHostIDextension);
+        }
+
+        public void setCDAauthenticatorAssignedEntityIdHostIDextension(string value)
+        {
+            setInnerTextSingle(CDAauthenticatorAssignedEntityIdHostIDextension, value);
         }
 
         public string getCDAauthenticatorAssignedEntityAssignedPersonNameGiven()

@@ -18,24 +18,27 @@ namespace CDAparser
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string productsFile = Path.Combine(Request.PhysicalApplicationPath, "CDA_PMJ_ToVilage_ListofDisablePerson.xml");
+            string productsFile = Path.Combine(Request.PhysicalApplicationPath, @"XML/01_CDA_Education_Evaluation.xml");
             CDAEntryOfPatient ss = new CDAEntryOfPatient();
-            ss.getXMLelement(new XmlDocument());
+            XmlElement test1 = ss.getXMLelement(new XmlDocument());
 
             CDAparser parser = new CDAparser(productsFile);
             //parser.setCDAclassCode("Test");
-            CDAEntry cm = new CDAEntry();
-            cm.observationValue = "555555";
+            //CDAEntry cm = new CDAEntry();
+            //cm.observationValue = "555555";
 
-            List<CDAEntryOfPatient> xxx = parser.getEntryOfPatientList();
-            //TextBoxOutput.Text = parser.getCDAcomponentStructuredBodyComponentSectionTitle();
+            //List<CDAEntryOfPatient> xxx = parser.getEntryOfPatientList();
+            TextBoxOutput.Text = parser.getCDAauthenticatorAssignedEntityIdHostIDextension();
 
-            List<string> tmp = parser.getCDAListComponentStructuredBodyComponentEntryRecordTargetPatientRolePatientBirthTime();
-            foreach (string a in tmp)
-            {
-                ListBox1.Items.Add(a);
-            }
+            //List<string> tmp = parser.getCDAListComponentStructuredBodyComponentEntryRecordTargetPatientRolePatientBirthTime();
+            //foreach (string a in tmp)
+            //{
+                //ListBox1.Items.Add(a);
+            //}
 
+            CDAEntryOfProfile cda = new CDAEntryOfProfile();
+            XmlElement test = cda.getXMLelement(new XmlDocument());
+            int a = 0;
         }
     }
 }

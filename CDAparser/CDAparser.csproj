@@ -20,6 +20,10 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -54,23 +58,6 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CDA_CaseManager_ToEducation.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="CDA_Education_ToCaseManager.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="CDA_Education_ToHospital_Planning.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="CDA_PMJ_ToVilage_ListofDisablePerson.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="CDA_Profile.xml" />
-    <Content Include="CDA_School_ToHospital_Development.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="CDA_School_ToVillage_Milk.xml" />
     <Content Include="Default.aspx" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
@@ -82,6 +69,14 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="XML\01_CDA_Education_Evaluation.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="XML\02_CDA_Education_Planning.xml" />
+    <Content Include="XML\03_CDA_Education_ServiceProvision.xml" />
+    <Content Include="XML\04_CDA_Education_Development.xml" />
+    <Content Include="XML\05_CDA_Education_Profile.xml" />
+    <Content Include="XML\06_CDA_Education_Milk.xml" />
     <Content Include="ต้นแบบ.xml.xml" />
   </ItemGroup>
   <ItemGroup>
