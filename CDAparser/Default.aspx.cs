@@ -28,7 +28,7 @@ namespace CDAparser
             //cm.observationValue = "555555";
 
             //List<CDAEntryOfPatient> xxx = parser.getEntryOfPatientList();
-            TextBoxOutput.Text = parser.getCDAauthenticatorAssignedEntityIdHostIDextension();
+            //TextBoxOutput.Text = parser.test();
 
             //List<string> tmp = parser.getCDAListComponentStructuredBodyComponentEntryRecordTargetPatientRolePatientBirthTime();
             //foreach (string a in tmp)
@@ -36,9 +36,15 @@ namespace CDAparser
                 //ListBox1.Items.Add(a);
             //}
 
-            CDAEntryOfProfile cda = new CDAEntryOfProfile();
-            XmlElement test = cda.getXMLelement(new XmlDocument());
-            int a = 0;
+            //CDAEntryOfProfile cda = new CDAEntryOfProfile();
+            //XmlElement test = cda.getXMLelement(new XmlDocument());
+            //int a = 0;
+            List<CDAEntry> test = parser.getEntryList("ED006");
+            foreach (CDAEntry a in test)
+            {
+                ListBox1.Items.Add(a.typeCode + " " + a.observationDisplayName);
+            }
+
         }
     }
 }

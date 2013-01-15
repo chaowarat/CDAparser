@@ -16,56 +16,37 @@ namespace CDAparser
         public string typeCode { get; set; }
         public string observationClassCode { get; set; }
         public string observationMoodCode { get; set; }
-        public string observationTemplateIdRoot { get; set; }
-        public string observationIdRoot { get; set; }
         public string observationCode { get; set; }
         public string observationCodeSystem { get; set; }
         public string observationDisplayName { get; set; }
-        public string observationStatusCode { get; set; }
         public string observationEffectiveTimeCenterValue { get; set; }
-        public string observationValue { get; set; }
-        public string observationValueXSItype { get; set; }
 
         public CDAEntry()
         {
             this.typeCode = "DRIV";
             this.observationClassCode = "OBS";
             this.observationMoodCode = "RQO";
-            this.observationTemplateIdRoot = "2.16.840.1.113883.10.20.1.25";
-            this.observationIdRoot = "9a6d1bac-17d3-4195-89a4-1121bc809b4a";
             this.observationCode = ".......";
             this.observationCodeSystem = "2.16.840.1.113883.6.96";
             this.observationDisplayName = "";
-            this.observationStatusCode = "new";
             this.observationEffectiveTimeCenterValue = "";
-            this.observationValue = "";
-            this.observationValueXSItype = "ED";
         }
 
         public XmlElement getXMLelement(XmlDocument document)
         {
-            XNamespace xsi = "http://www.w3.org/2001/XMLSchema-instance";
             XElement entry =new XElement("entry",
                                 new XAttribute("typeCode", this.typeCode),
                             new XElement("observation",
                                 new XAttribute("classCode", this.observationClassCode),
                                 new XAttribute("moodCode", this.observationMoodCode),
-                            new XElement("templateId",
-                                new XAttribute("root", this.observationTemplateIdRoot)),
-                            new XElement("id",
-                                new XAttribute("root", this.observationIdRoot)),
                             new XElement("code",
                                 new XAttribute("code", this.observationCode),
                                 new XAttribute("codeSystem", this.observationCodeSystem),
                                 new XAttribute("displayName", this.observationDisplayName)),
-                            new XElement("statusCode",
-                                new XAttribute("code", this.observationStatusCode)),
                             new XElement("effectiveTime",
                                 new XElement("center",
                                     new XAttribute("value", this.observationEffectiveTimeCenterValue))    
-                            ),
-                            new XElement("value",this.observationValue,
-                                new XAttribute(xsi + "type", this.observationValueXSItype))
+                            )
                         )
                     );
             return toXmlElement(entry, document);

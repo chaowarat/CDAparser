@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href='CDA.xsl' type='text/xsl'?>
 <ClinicalDocument> <!--xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" classCode="DOCCLIN" moodCode="EVN" xsi:schemaLocation="urn:hl7-org:v3 ../schemas/CDA.xsd"-->
-  <code code="04" displayName="Development From Education"/>
+  <code code="17" displayName="Planning From CaseManager"/>
   <effectiveTime value="20130106"/>
   
   <recordTarget contextControlCode="OP" typeCode="RCT">
     <patientRole classCode="PAT">
-      <id extension="1659900384680" root="2.16.840.1.113883.19.2744.1.2"/> 
+      <id extension="1659900384680" root="2.16.840.1.113883.19.2744.1.2"/> <!--2.16.840.1.113883.19.2744.1.2 represent Patient , id extension = "Child ID" -->
       <patient>
         <name>
           <given>Jirawat</given>
@@ -19,7 +19,7 @@
     </patientRole>
   </recordTarget>
   
-  <!-- รายละเอียดครูที่ทำการบันทึกข้อมูล-->
+  <!-- CM ทำการบันทึกข้อมูล-->
   <author contextControlCode="OP" typeCode="AUT">
     <time value="20120430"/>
     <assignedAuthor>
@@ -33,7 +33,7 @@
       </assignedPerson>
     </assignedAuthor>
   </author>
-
+<!--สถานที่ CM สังกัดอยุ่-->
   <custodian typeCode="CST">
     <assignedCustodian classCode="ASSIGNED">
       <representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
@@ -42,7 +42,7 @@
       </representedCustodianOrganization>
     </assignedCustodian>
   </custodian>
-
+<!--หัวหน้าของ CM-->
   <legalAuthenticator contextControlCode="OP" typeCode="LA">
     <time value="201204301253"/>
     <signatureCode code="S"/>
@@ -58,7 +58,7 @@
     </assignedEntity>
   </legalAuthenticator>
   
-
+<!--CM ที่ทำการบันทึก-->
   <authenticator>
     <time value="20060622"/>
     <signatureCode code="S"/>
@@ -76,12 +76,12 @@
   </authenticator>
   
 		<component>
+		<planNumber planNumber="3"/>
 		<section>
-			<code code="E009" displayName="กิจกรรมส่งเสริมพัฒนาการ"/>
-			
+			<code code="CA003" displayName="การวางแผนบริการจาก Case Manager"/>
 			<entry typeCode="DRIV">
 				<observation classCode="OBS" moodCode="RQO">
-					<code code="d4xxx.404" codeSystem="2.16.840.1.113883.6.500" displayName="การให้บริการกายภาพบำบัด"/>  <!--เปลี่ยนโค้ดกิจกรรม ตามกิจกรรมที่วางแผนไว้ อาจะเปลี่ยน  Codesystem ด้วย-->
+					<code code="B435" codeSystem="2.16.840.1.113883.6.500" displayName="ท่านมีปัญหาเกี่ยวกับภาวะภูมิแพ้ หรือไม่"/> 
 					<effectiveTime>
 						<center value="20120429"/>
 					</effectiveTime>
@@ -91,13 +91,21 @@
 			<entry typeCode="DRIV">
 				<observation classCode="OBS" moodCode="RQO">
 					<!-- Plan of Activity activity template -->
-					<code code="d9200.401" codeSystem="2.16.840.1.113883.6.500" displayName="การให้บริการกิจกรรมบำบัด"/>  <!--เปลี่ยนโค้ดกิจกรรม ตามกิจกรรมที่วางแผนไว้ อาจะเปลี่ยน  Codesystem ด้วย-->
+					<code code="......." codeSystem="2.16.840.1.113883.6.500" displayName="การให้บริการกายภาพบำบัด"/>  <!--เปลี่ยนโค้ดกิจกรรม ตามกิจกรรมที่วางแผนไว้ อาจะเปลี่ยน  Codesystem ด้วย-->
 					<effectiveTime>
 						<center value="20120430"/>
 					</effectiveTime>
 				</observation>
 			</entry>
 			
+			<entry typeCode="DRIV">
+				<observation classCode="OBS" moodCode="RQO">
+					<code code="......." codeSystem="2.16.840.1.113883.6.96" displayName="การให้บริการกายภาพบำบัด"/>  <!--เปลี่ยนโค้ดกิจกรรม ตามกิจกรรมที่วางแผนไว้ อาจะเปลี่ยน  Codesystem ด้วย-->
+					<effectiveTime>
+						<center value="20120430"/>
+					</effectiveTime>
+				</observation>
+			</entry>	
 		</section>
 	  </component>
  </ClinicalDocument>

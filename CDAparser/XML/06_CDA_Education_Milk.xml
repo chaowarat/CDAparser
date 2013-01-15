@@ -63,7 +63,7 @@
 		
 		<component>
 			<section>
-			<code code="........" codeSystem="2.16.840.1.113883.6.500" codeSystemName="ICF" displayName="รายชื่อผู้พิการ"/>
+			<code code="ED011" displayName="รายชื่อเด็กได้รับอาหารเสริมนมและอาหารกลางวัน"/>
 			
 			<entry typeCode="DRIV">
 				<recordTarget>
@@ -111,7 +111,7 @@
 					<childPic value=""/>
 					<childPicCID value=""/>
 				</patient>
-        </patientRole> 
+        </patientRole>
 				</recordTarget>
 			</entry>
 			

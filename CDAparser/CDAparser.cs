@@ -5,6 +5,7 @@ using System.Web;
 using System.IO;
 using System.Xml.XPath;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace CDAparser
 {
@@ -48,6 +49,7 @@ namespace CDAparser
         private static String CDAauthorTimeValue = "author/time/@value";
         private static String CDAauthorAssignedAuthorIdExtension = "author/assignedAuthor/id/@extension";
         private static String CDAauthorAssignedAuthorIdRoot = "author/assignedAuthor/id/@root";
+        private static String CDAauthorAssignedAuthorHostIDExtension = "author/assignedAuthor/hostID/@extension";
         private static String CDAauthorAssignedAuthorAssignedPersonNameGiven = "author/assignedAuthor/assignedPerson/name/given";
         private static String CDAauthorAssignedAuthorAssignedPersonNameFamily = "author/assignedAuthor/assignedPerson/name/family";
         private static String CDAauthorAssignedAuthorAssignedPersonNameSuffix = "author/assignedAuthor/assignedPerson/name/suffix";
@@ -66,6 +68,7 @@ namespace CDAparser
         private static String CDAlegalAuthenticatorSignatureCode = "legalAuthenticator/signatureCode/@code";
         private static String CDAlegalAuthenticatorAssignedEntityIdExtension = "legalAuthenticator/assignedEntity/id/@extension";
         private static String CDAlegalAuthenticatorAssignedEntityIdRoot = "legalAuthenticator/assignedEntity/id/@root";
+        private static String CDAlegalAuthenticatorAssignedEntityHostIDExtension = "legalAuthenticator/assignedEntity/hostID/@extension";
         private static String CDAlegalAuthenticatorAssignedEntityAssignedPersonNameGiven = "legalAuthenticator/assignedEntity/assignedPerson/name/given";
         private static String CDAlegalAuthenticatorAssignedEntityAssignedPersonNameFamily = "legalAuthenticator/assignedEntity/assignedPerson/name/family";
         private static String CDAlegalAuthenticatorAssignedEntityAssignedPersonNameSuffix = "legalAuthenticator/assignedEntity/assignedPerson/name/suffix";
@@ -75,7 +78,7 @@ namespace CDAparser
         private static String CDAauthenticatorAssignedEntityClassCode = "authenticator/assignedEntity/@classCode";
         private static String CDAauthenticatorAssignedEntityIdExtension = "authenticator/assignedEntity/id/@extension";
         private static String CDAauthenticatorAssignedEntityIdRoot = "authenticator/assignedEntity/id/@root";
-        private static String CDAauthenticatorAssignedEntityIdHostIDextension = "authenticator/assignedEntity/hostID/@extension";
+        private static String CDAauthenticatorAssignedEntityHostIDExtension = "authenticator/assignedEntity/hostID/@extension";
         private static String CDAauthenticatorAssignedEntityAssignedPersonNameGiven = "authenticator/assignedEntity/assignedPerson/name/given";
         private static String CDAauthenticatorAssignedEntityAssignedPersonNameFamily = "authenticator/assignedEntity/assignedPerson/name/family";
         private static String CDAauthenticatorAssignedEntityAssignedPersonNameSuffix = "authenticator/assignedEntity/assignedPerson/name/suffix";
@@ -540,6 +543,16 @@ namespace CDAparser
             setInnerTextSingle(CDAauthorAssignedAuthorIdRoot, value);
         }
 
+        public string getCDAauthorAssignedAuthorHostIDExtension()
+        {
+            return getInnerTextSingle(CDAauthorAssignedAuthorHostIDExtension);
+        }
+
+        public void setCDAauthorAssignedAuthorHostIDExtension(string value)
+        {
+            setInnerTextSingle(CDAauthorAssignedAuthorHostIDExtension, value);
+        }
+
         public string getCDAauthorAssignedAuthorAssignedPersonNameGiven()
         {
             return getInnerTextSingle(CDAauthorAssignedAuthorAssignedPersonNameGiven);
@@ -704,6 +717,16 @@ namespace CDAparser
             setInnerTextSingle(CDAlegalAuthenticatorAssignedEntityIdRoot, value);
         }
 
+        public string getCDAlegalAuthenticatorAssignedEntityHostIDExtension()
+        {
+            return getInnerTextSingle(CDAlegalAuthenticatorAssignedEntityHostIDExtension);
+        }
+
+        public void setCDAlegalAuthenticatorAssignedEntityHostIDExtension(string value)
+        {
+            setInnerTextSingle(CDAlegalAuthenticatorAssignedEntityHostIDExtension, value);
+        }
+
         public string getCDAlegalAuthenticatorAssignedEntityAssignedPersonNameGiven()
         {
             return getInnerTextSingle(CDAlegalAuthenticatorAssignedEntityAssignedPersonNameGiven);
@@ -786,14 +809,14 @@ namespace CDAparser
             setInnerTextSingle(CDAauthenticatorAssignedEntityIdRoot, value);
         }
 
-        public string getCDAauthenticatorAssignedEntityIdHostIDextension()
+        public string getCDAauthenticatorAssignedEntityHostIDExtension()
         {
-            return getInnerTextSingle(CDAauthenticatorAssignedEntityIdHostIDextension);
+            return getInnerTextSingle(CDAauthenticatorAssignedEntityHostIDExtension);
         }
 
-        public void setCDAauthenticatorAssignedEntityIdHostIDextension(string value)
+        public void setCDAauthenticatorAssignedEntityHostIDExtension(string value)
         {
-            setInnerTextSingle(CDAauthenticatorAssignedEntityIdHostIDextension, value);
+            setInnerTextSingle(CDAauthenticatorAssignedEntityHostIDExtension, value);
         }
 
         public string getCDAauthenticatorAssignedEntityAssignedPersonNameGiven()
@@ -987,85 +1010,19 @@ namespace CDAparser
         }
         #endregion
 
-        #region component body
-        public List<string> getCDAListcomponentStructuredBodyComponentSectionEntryTypeCode()
-        {
-            return getInnerTextMultiple(CDAcomponentStructuredBodyComponentSectionEntryTypeCode);
-        }
-
-        public List<string> getCDAListcomponentStructuredBodyComponentSectionEntryObservationClassCode()
-        {
-            return getInnerTextMultiple(CDAcomponentStructuredBodyComponentSectionEntryObservationClassCode);
-        }
-
-        public List<string> getCDAListcomponentStructuredBodyComponentSectionEntryObservationMoodCode()
-        {
-            return getInnerTextMultiple(CDAcomponentStructuredBodyComponentSectionEntryObservationMoodCode);
-        }
-
-        public List<string> getCDAListcomponentStructuredBodyComponentSectionEntryObservationTemplateIdRoot()
-        {
-            return getInnerTextMultiple(CDAcomponentStructuredBodyComponentSectionEntryObservationTemplateIdRoot);
-        }
-
-        public List<string> getCDAListcomponentStructuredBodyComponentSectionEntryObservationIdRoot()
-        {
-            return getInnerTextMultiple(CDAcomponentStructuredBodyComponentSectionEntryObservationIdRoot);
-        }
-
-        public List<string> getCDAListcomponentStructuredBodyComponentSectionEntryObservationCode()
-        {
-            return getInnerTextMultiple(CDAcomponentStructuredBodyComponentSectionEntryObservationCode);
-        }
-
-        public List<string> getCDAListcomponentStructuredBodyComponentSectionEntryObservationCodeSystem()
-        {
-            return getInnerTextMultiple(CDAcomponentStructuredBodyComponentSectionEntryObservationCodeSystem);
-        }
-
-        public List<string> getCDAListcomponentStructuredBodyComponentSectionEntryObservationDisplayName()
-        {
-            return getInnerTextMultiple(CDAcomponentStructuredBodyComponentSectionEntryObservationDisplayName);
-        }
-
-        public List<string> getCDAListcomponentStructuredBodyComponentSectionEntryObservationStatusCode()
-        {
-            return getInnerTextMultiple(CDAcomponentStructuredBodyComponentSectionEntryObservationStatusCode);
-        }
-
-        public List<string> getCDAListcomponentStructuredBodyComponentSectionEntryObservationEffectiveTimeCenterValue()
-        {
-            return getInnerTextMultiple(CDAcomponentStructuredBodyComponentSectionEntryObservationEffectiveTimeCenterValue);
-        }
-
-        public List<string> getCDAListcomponentStructuredBodyComponentSectionEntryObservationValue()
-        {
-            return getInnerTextMultiple(CDAcomponentStructuredBodyComponentSectionEntryObservationValue);
-        }
-
-        public List<string> getCDAListcomponentStructuredBodyComponentSectionEntryObservationValueXSItype()
-        {
-            return getInnerTextMultiple(CDAcomponentStructuredBodyComponentSectionEntryObservationValueXSItype);
-        }
-        #endregion
-
-        public List<CDAEntry> getEntryList()
+        public List<CDAEntry> getEntryList(string sectionCode)  /// not work
         {
             List<CDAEntry> output = new List<CDAEntry>();
             CDAEntry entry;
+            string section = "component/section[code/@code='" + sectionCode + "']/";
 
-            List<string> typeCode = getCDAListcomponentStructuredBodyComponentSectionEntryTypeCode();
-            List<string> observationClassCode = getCDAListcomponentStructuredBodyComponentSectionEntryObservationClassCode();
-            List<string> observationMoodCode = getCDAListcomponentStructuredBodyComponentSectionEntryObservationMoodCode();
-            List<string> observationTemplateIdRoot = getCDAListcomponentStructuredBodyComponentSectionEntryObservationTemplateIdRoot();
-            List<string> observationIdRoot = getCDAListcomponentStructuredBodyComponentSectionEntryObservationIdRoot();
-            List<string> observationCode = getCDAListcomponentStructuredBodyComponentSectionEntryObservationCode();
-            List<string> observationCodeSystem = getCDAListcomponentStructuredBodyComponentSectionEntryObservationCodeSystem();
-            List<string> observationDisplayName = getCDAListcomponentStructuredBodyComponentSectionEntryObservationDisplayName();
-            List<string> observationStatusCode = getCDAListcomponentStructuredBodyComponentSectionEntryObservationStatusCode();
-            List<string> observationEffectiveTimeCenterValue = getCDAListcomponentStructuredBodyComponentSectionEntryObservationEffectiveTimeCenterValue();
-            List<string> observationValue = getCDAListcomponentStructuredBodyComponentSectionEntryObservationValue();
-            List<string> observationValueXSItype = getCDAListcomponentStructuredBodyComponentSectionEntryObservationValueXSItype();
+            List<string> typeCode = getInnerTextMultiple(section + "entry/@typeCode");
+            List<string> observationClassCode = getInnerTextMultiple(section + "entry/observation/@classCode");
+            List<string> observationMoodCode = getInnerTextMultiple(section + "entry/observation/@moodCode");
+            List<string> observationCode = getInnerTextMultiple(section + "entry/observation/code/@code");
+            List<string> observationCodeSystem = getInnerTextMultiple(section + "entry/observation/code/@codeSystem");
+            List<string> observationDisplayName = getInnerTextMultiple(section + "entry/observation/code/@displayName");
+            List<string> observationEffectiveTimeCenterValue = getInnerTextMultiple(section + "entry/observation/effectiveTime/center/@value");
 
             for (int i = 0; i < typeCode.Count; i++)
             {
@@ -1073,18 +1030,49 @@ namespace CDAparser
                 entry.typeCode = typeCode[i];
                 entry.observationClassCode = observationClassCode[i];
                 entry.observationMoodCode = observationMoodCode[i];
-                entry.observationTemplateIdRoot = observationTemplateIdRoot[i];
-                entry.observationIdRoot = observationIdRoot[i];
                 entry.observationCode = observationCode[i];
                 entry.observationCodeSystem = observationCodeSystem[i];
                 entry.observationDisplayName = observationDisplayName[i];
-                entry.observationStatusCode = observationStatusCode[i];
                 entry.observationEffectiveTimeCenterValue = observationEffectiveTimeCenterValue[i];
-                entry.observationValue = observationValue[i];
-                entry.observationValueXSItype = observationValueXSItype[i];
                 output.Add(entry);
             }
             return output;
+        }
+
+        public XmlElement toXmlElement(XElement xelement, XmlDocument document)
+        {
+            return document.ReadNode(xelement.CreateReader()) as XmlElement;
+        }
+
+        public void setSectionOfEntry(List<CDAEntry> list, string sectionCode, string displayName)
+        {
+            XmlNode componentNode = document.SelectSingleNode("//component");
+            XmlElement section = document.CreateElement("section");
+            XmlElement code = document.CreateElement("code");
+            code.SetAttribute("code", sectionCode);
+            code.SetAttribute("displayName", displayName);
+            section.AppendChild(code);
+
+            foreach(CDAEntry entry in list)
+            {
+                XElement en = new XElement("entry",
+                                new XAttribute("typeCode", entry.typeCode),
+                            new XElement("observation",
+                                new XAttribute("classCode", entry.observationClassCode),
+                                new XAttribute("moodCode", entry.observationMoodCode),
+                            new XElement("code",
+                                new XAttribute("code", entry.observationCode),
+                                new XAttribute("codeSystem", entry.observationCodeSystem),
+                                new XAttribute("displayName", entry.observationDisplayName)),
+                            new XElement("effectiveTime",
+                                new XElement("center",
+                                    new XAttribute("value", entry.observationEffectiveTimeCenterValue))
+                            )
+                        )
+                 );
+                section.AppendChild(toXmlElement(en, document));
+            }
+            componentNode.AppendChild(section);
         }
 
         #region List of patient
@@ -1193,6 +1181,7 @@ namespace CDAparser
             }
             return output;
         }
+
 
     }
 }

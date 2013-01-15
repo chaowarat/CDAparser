@@ -76,13 +76,14 @@
 	  </authenticator>
   
 		<component>
+			<planNumber planNumber="3"/>
 			<!--การวินิจฉัยความบกพร่องทางการแพทย์-->
 			<section>
-				<code code="....." codeSystem="2.16.840.1.113883.6.500" codeSystemName="ICF" displayName="การวินิจฉัยความบกพร่องทางการแพทย์"/>
+				<code code="ED001" displayName="การวินิจฉัยความบกพร่องทางการแพทย์"/>
 			
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
-						<code code="b210-b229  s210 s220 s230" codeSystem="2.16.840.1.113883.6.500" displayName="บุคคลที่มีความบกพร่องทางการเห็น"/> 
+						<code code="b210.1 s210.1 s220.1" codeSystem="2.16.840.1.113883.6.500" displayName="บุคคลที่มีความบกพร่องทางการเห็น"/> 
 						<effectiveTime>
 							<center value="20120429"/>
 						</effectiveTime>
@@ -92,7 +93,7 @@
 			
 			<!--ข้อควรพิจารณาประวัติทางการแพทย์-->
 			<section>
-				<code code="....." codeSystem="2.16.840.1.113883.6.500" codeSystemName="ICF" displayName="ข้อควรพิจารณาประวัติทางการแพทย์"/>
+				<code code="ED002" displayName="ข้อควรพิจารณาประวัติทางการแพทย์"/>
 			
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
@@ -108,18 +109,18 @@
 					<observation classCode="OBS" moodCode="RQO">
 						<code code="b230 2b40 b249 s240 s250 s260" codeSystem="2.16.840.1.113883.6.500" displayName="มีอาการติดเชื้อที่หูบ่อยครั้ง"/> 
 						<effectiveTime>
-							<center value="20120429?????????????"/>
+							<center value="20120429"/>
 						</effectiveTime>
 					</observation>
 				</entry>		
 			</section>
 			
 			<section>
-				<code code="b210-b229  s210 s220 s230" codeSystem="2.16.840.1.113883.6.500" codeSystemName="ICF" displayName="การได้ยิน"/>
+				<code code="ED003" displayName="การได้ยิน"/>
 			
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
-						<code code="b s" codeSystem="2.16.840.1.113883.6.500" displayName="มีปัญหาการสูญเสียการได้ยินเล็กน้อย - หูขวา"/> 
+						<code code="b230.2 s240.3 s250.3 s260.3" codeSystem="2.16.840.1.113883.6.500" displayName="มีปัญหาการสูญเสียการได้ยินเล็กน้อย - หูขวา"/> 
 						<effectiveTime>
 							<center value="20120429"/>
 						</effectiveTime>
@@ -128,7 +129,7 @@
 			</section>
 			
 			<section>
-				<code code="b7 s7" codeSystem="2.16.840.1.113883.6.500" codeSystemName="ICF" displayName="การเคลื่อนไหว"/>
+				<code code="ED004" displayName="การเคลื่อนไหว"/>
 				
 				<!--ถ้า Value = 0 ไม่สามารถทำงานได้-->
 				<!--ถ้า Value = 1 ทำงานได้บ้าง-->
@@ -175,7 +176,7 @@
 				
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
-						<code code="s7520" codeSystem="2.16.840.1.113883.6.500" displayName="เท้า"/> 
+						<code code="s7520.1" codeSystem="2.16.840.1.113883.6.500" displayName="เท้า"/> 
 						<value code="0"/>
 						<effectiveTime>
 							<center value="20120429"/>
@@ -185,7 +186,7 @@
 				
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
-						<code code="s7520" codeSystem="2.16.840.1.113883.6.500" displayName="ข้อเท้า"/> 
+						<code code="s7520.2" codeSystem="2.16.840.1.113883.6.500" displayName="ข้อเท้า"/> 
 						<value code="0"/>
 						<effectiveTime>
 							<center value="20120429"/>
@@ -205,7 +206,7 @@
 				
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
-						<code code="s210 s220 s230" codeSystem="2.16.840.1.113883.6.500" displayName="ตา"/> 
+						<code code="s210.3" codeSystem="2.16.840.1.113883.6.500" displayName="ตา"/> 
 						<value code="0"/>
 						<effectiveTime>
 							<center value="20120429"/>
@@ -216,7 +217,7 @@
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
 						<!--คิ้ว ไม่มี ICF-->
-						<code code="" codeSystem="2.16.840.1.113883.6.500" displayName="คิ้ว"/> 
+						<code code="s2302" codeSystem="2.16.840.1.113883.6.500" displayName="คิ้ว"/> 
 						<value code="0"/>
 						<effectiveTime>
 							<center value="20120429"/>
@@ -226,7 +227,7 @@
 				
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
-						<code code="s320" codeSystem="2.16.840.1.113883.6.500" displayName="ปาก"/> 
+						<code code="s320.2" codeSystem="2.16.840.1.113883.6.500" displayName="ปาก"/> 
 						<value code="0"/>
 						<effectiveTime>
 							<center value="20120429"/>
@@ -236,7 +237,7 @@
 				
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
-						<code code="s430" codeSystem="2.16.840.1.113883.6.500" displayName="การหายใจ"/> 
+						<code code="s430.2" codeSystem="2.16.840.1.113883.6.500" displayName="การหายใจ"/> 
 						<value code="0"/>
 						<effectiveTime>
 							<center value="20120429"/>
@@ -246,7 +247,7 @@
 				
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
-						<code code="s7" codeSystem="2.16.840.1.113883.6.500" displayName="ความสามารถในการเคลื่อนไหวร่างกายและช่วยเหลือตนเอง"/> 
+						<code code="s7xx.3" codeSystem="2.16.840.1.113883.6.500" displayName="ความสามารถในการเคลื่อนไหวร่างกายและช่วยเหลือตนเอง"/> 
 						<value code="0"/>
 						<effectiveTime>
 							<center value="20120429"/>
@@ -257,7 +258,7 @@
 			
 			<section>
 				<!--การช่วยเหลือตนเอง ไม่มี ICF-->
-				<code code="" codeSystem="2.16.840.1.113883.6.500" codeSystemName="ICF" displayName="การช่วยเหลือตนเอง"/>
+				<code code="ED005" displayName="การช่วยเหลือตนเอง"/>
 				
 				<!--ถ้า Value = 0 ทำไม่ได้-->
 				<!--ถ้า Value = 1 ทำได้แต่ต้องช่วยเหลือ-->
@@ -284,7 +285,7 @@
 				
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
-						<code code="d475" codeSystem="2.16.840.1.113883.6.500" displayName="ความสามารถในการเข้าถึงการขนส่ง ถนนหนทาง และอาคารต่างๆ"/> 
+						<code code="d470" codeSystem="2.16.840.1.113883.6.500" displayName="ความสามารถในการเข้าถึงการขนส่ง ถนนหนทาง และอาคารต่างๆ"/> 
 						<value code="0"/>
 						<effectiveTime>
 							<center value="20120429"/>
@@ -304,7 +305,7 @@
 				
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
-						<code code="d4100" codeSystem="2.16.840.1.113883.6.500" displayName="ความสามารถในการเคลื่อนย้ายตนเอง - การลุกขึ้นนั่งเอง"/> 
+						<code code="d4103" codeSystem="2.16.840.1.113883.6.500" displayName="ความสามารถในการเคลื่อนย้ายตนเอง - การลุกขึ้นนั่งเอง"/> 
 						<value code="0"/>
 						<effectiveTime>
 							<center value="20120429"/>
@@ -312,10 +313,10 @@
 					</observation>
 				</entry>
 				
-				<!--ข้อความในแบบคัดกรองในเว็ปศูนย์การศึกษาพิเศษไม่ครบ ????-->
+				<!--ข้อความในแบบคัดกรองในเว็ปศูนย์การศึกษาพิเศษไม่ครบ-->
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
-						<code code="" codeSystem="2.16.840.1.113883.6.500" displayName="ความสามารถในการเคลื่อนย้ายตนเอง - การเคลื่อนย้ายจาก??????"/> 
+						<code code="" codeSystem="2.16.840.1.113883.6.500" displayName="ความสามารถในการเคลื่อนย้ายตนเอง - การเคลื่อนย้ายจาก"/> 
 						<value code="0"/>
 						<effectiveTime>
 							<center value="20120429"/>
@@ -325,7 +326,7 @@
 				<!--ข้อความในแบบคัดกรองในเว็ปศูนย์การศึกษาพิเศษไม่ครบ-->
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
-						<code code="" codeSystem="2.16.840.1.113883.6.500" displayName="ความสามารถในการเคลื่อนย้ายตนเอง - การเคลื่อนย้ายจา????"/> 
+						<code code="" codeSystem="2.16.840.1.113883.6.500" displayName="ความสามารถในการเคลื่อนย้ายตนเอง - การเคลื่อนย้ายจา"/> 
 						<value code="0"/>
 						<effectiveTime>
 							<center value="20120429"/>
@@ -342,10 +343,10 @@
 						</effectiveTime>
 					</observation>
 				</entry>
-				<!--ข้อความในแบบคัดกรองในเว็ปศูนย์การศึกษาพิเศษไม่ครบ-->
+
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
-						<code code="d465" codeSystem="2.16.840.1.113883.6.500" displayName="ความสามารถในการเคลื่อนย้ายไปยังที่อื่น - โดยการใช้????"/> 
+						<code code="d465" codeSystem="2.16.840.1.113883.6.500" displayName="ความสามารถในการเคลื่อนย้ายไปยังที่อื่น - โดยการใช้"/> 
 						<value code="0"/>
 						<effectiveTime>
 							<center value="20120429"/>
@@ -355,7 +356,7 @@
 				
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
-						<code code="d4455" codeSystem="2.16.840.1.113883.6.500" displayName="ความสามารถในการรับประทานอาหาร - ด้วยช้อนหรือมือ"/> 
+						<code code="d4455.1" codeSystem="2.16.840.1.113883.6.500" displayName="ความสามารถในการรับประทานอาหาร - ด้วยช้อนหรือมือ"/> 
 						<value code="0"/>
 						<effectiveTime>
 							<center value="20120429"/>
@@ -365,7 +366,7 @@
 				
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
-						<code code="d4455" codeSystem="2.16.840.1.113883.6.500" displayName="ความสามารถในการรับประทานอาหาร - ดื่มน้ำด้วยแก้ว"/> 
+						<code code="d4455.2" codeSystem="2.16.840.1.113883.6.500" displayName="ความสามารถในการรับประทานอาหาร - ดื่มน้ำด้วยแก้ว"/> 
 						<value code="0"/>
 						<effectiveTime>
 							<center value="20120429"/>
@@ -375,7 +376,7 @@
 				
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
-						<code code="d5400 d5401" codeSystem="2.16.840.1.113883.6.500" displayName="ความสามารถในการแต่งตัว - สวมและถอดเสื้อ"/> 
+						<code code="d5400.1 d5401.1" codeSystem="2.16.840.1.113883.6.500" displayName="ความสามารถในการแต่งตัว - สวมและถอดเสื้อ"/> 
 						<value code="0"/>
 						<effectiveTime>
 							<center value="20120429"/>
@@ -385,7 +386,17 @@
 				
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
-						<code code="d5400 d5401" codeSystem="2.16.840.1.113883.6.500" displayName="ความสามารถในการแต่งตัว - สวมและถอดชุดชั้นใน"/> 
+						<code code="d5400.2 d5401.2" codeSystem="2.16.840.1.113883.6.500" displayName="ความสามารถในการแต่งตัว - สวมและถอดกางเกง ผ้าถุง"/> 
+						<value code="0"/>
+						<effectiveTime>
+							<center value="20120429"/>
+						</effectiveTime>
+					</observation>
+				</entry>
+				
+				<entry typeCode="DRIV">
+					<observation classCode="OBS" moodCode="RQO">
+						<code code="d5400.3 d5401.3" codeSystem="2.16.840.1.113883.6.500" displayName="ความสามารถในการแต่งตัว - สวมและถอดชุดชั้นใน"/> 
 						<value code="0"/>
 						<effectiveTime>
 							<center value="20120429"/>
@@ -405,7 +416,7 @@
 				
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
-						<code code="d5100" codeSystem="2.16.840.1.113883.6.500" displayName="ความสามารถในการดูแลสุขภาพส่วนตัว - การทำความสะอาดห????"/> 
+						<code code="d5100" codeSystem="2.16.840.1.113883.6.500" displayName="ความสามารถในการดูแลสุขภาพส่วนตัว - การทำความสะอาดห"/> 
 						<value code="0"/>
 						<effectiveTime>
 							<center value="20120429"/>
@@ -435,8 +446,7 @@
 			</section>
 			
 			<section>
-				<!--Section นี้ Value มีค่ามาจาก TextBox ?????? -->
-				<code code="" codeSystem="2.16.840.1.113883.6.500" codeSystemName="ICF" displayName="ข้อมูลเกี่ยวกับกิจกรรม/สิ่งของ/บุคคลที่นักเรียนชอบ"/>
+				<code code="ED006" displayName="ข้อมูลเกี่ยวกับกิจกรรม/สิ่งของ/บุคคลที่นักเรียนชอบ"/>
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
 						<code code="" codeSystem="2.16.840.1.113883.6.500" displayName="กิจกรรมหรือสิ่งของที่นักเรียนชอบ"/> 
@@ -489,7 +499,7 @@
 				
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
-						<code code="e3" codeSystem="2.16.840.1.113883.6.500" displayName="บุคคลที่นักเรียนชอบ"/> 
+						<code code="e3xx" codeSystem="2.16.840.1.113883.6.500" displayName="บุคคลที่นักเรียนชอบ"/> 
 						<value code=""/>
 						<effectiveTime>
 							<center value="20120429"/>
