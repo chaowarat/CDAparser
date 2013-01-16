@@ -18,7 +18,7 @@ namespace CDAparser
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string productsFile = Path.Combine(Request.PhysicalApplicationPath, @"XML/01_CDA_Education_Evaluation.xml");
+            string productsFile = HttpContext.Current.Server.MapPath(@"XML/01_CDA_Education_Evaluation.xml");
             CDAEntryOfPatient ss = new CDAEntryOfPatient();
             XmlElement test1 = ss.getXMLelement(new XmlDocument());
 
@@ -46,5 +46,7 @@ namespace CDAparser
             }
 
         }
+
+
     }
 }

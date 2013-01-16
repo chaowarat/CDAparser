@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
+using System.Xml;
 
 namespace CDAparser
 {
@@ -11,6 +13,11 @@ namespace CDAparser
     public interface IServiceCasemanager
     {
         [OperationContract]
-        void DoWork();
+        [WebGet(UriTemplate = "/test")]
+        string DoWork();
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/getCasemanagerPlanning")]
+        XmlElement sendCasemanagerPlanning();
     }
 }

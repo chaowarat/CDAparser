@@ -106,18 +106,6 @@ namespace CDAparser
         private static String CDAcomponentStructuredBodyComponentSectionCodeDisplayName = "component/structuredBody/component/section/code/@displayName";
         private static String CDAcomponentStructuredBodyComponentSectionTitle = "component/structuredBody/component/section/title";
         //************************* component body (return list of string)****************************************************************
-        private static String CDAcomponentStructuredBodyComponentSectionEntryTypeCode = "component/structuredBody/component/section/entry/@typeCode";
-        private static String CDAcomponentStructuredBodyComponentSectionEntryObservationClassCode = "component/structuredBody/component/section/entry/observation/@classCode";
-        private static String CDAcomponentStructuredBodyComponentSectionEntryObservationMoodCode = "component/structuredBody/component/section/entry/observation/@moodCode";
-        private static String CDAcomponentStructuredBodyComponentSectionEntryObservationTemplateIdRoot = "component/structuredBody/component/section/entry/observation/templateId/@root";
-        private static String CDAcomponentStructuredBodyComponentSectionEntryObservationIdRoot = "component/structuredBody/component/section/entry/observation/id/@root";
-        private static String CDAcomponentStructuredBodyComponentSectionEntryObservationCode = "component/structuredBody/component/section/entry/observation/code/@code";
-        private static String CDAcomponentStructuredBodyComponentSectionEntryObservationCodeSystem = "component/structuredBody/component/section/entry/observation/code/@codeSystem";
-        private static String CDAcomponentStructuredBodyComponentSectionEntryObservationDisplayName = "component/structuredBody/component/section/entry/observation/code/@displayName";
-        private static String CDAcomponentStructuredBodyComponentSectionEntryObservationStatusCode = "component/structuredBody/component/section/entry/observation/statusCode/@code";
-        private static String CDAcomponentStructuredBodyComponentSectionEntryObservationEffectiveTimeCenterValue = "component/structuredBody/component/section/entry/observation/effectiveTime/center/@value";
-        private static String CDAcomponentStructuredBodyComponentSectionEntryObservationValue = "component/structuredBody/component/section/entry/observation/value";
-        private static String CDAcomponentStructuredBodyComponentSectionEntryObservationValueXSItype = "component/structuredBody/component/section/entry/observation/value/@*[local-name()='type']";
         //*************************list of people******************************************************************
         private static String CDApathToPatientEntry = "component/structuredBody/component/section/entry/";
 
