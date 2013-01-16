@@ -18,6 +18,6 @@ namespace CDAparser
 
         [OperationContract]
         [WebGet(UriTemplate = "/getCasemanagerPlanning")]
-        XmlElement sendCasemanagerPlanning();
+        XmlElement getCasemanagerPlanning();
     }
 }

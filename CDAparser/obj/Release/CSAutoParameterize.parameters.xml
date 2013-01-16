@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="CaseManagerDBConnectionString-Web.config Connection String" description="CaseManagerDBConnectionString Connection String used in web.config by the application to access the database." defaultValue="Data Source=CCC-PC;Initial Catalog=CaseManagerDB;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\CCC\\Documents\\GitHub\\CDAparser\\CDAparser\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='CaseManagerDBConnectionString']/@connectionString" />
+  </parameter>
+</parameters>

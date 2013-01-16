@@ -106,6 +106,8 @@
     <None Include="BbCasemanager.dbml.layout">
       <DependentUpon>BbCasemanager.dbml</DependentUpon>
     </None>
+    <None Include="Properties\PublishProfiles\serviceTest555 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\serviceTest555 - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

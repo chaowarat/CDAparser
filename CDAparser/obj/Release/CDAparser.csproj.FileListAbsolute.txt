@@ -1,0 +1,5 @@
+C:\Users\CCC\Documents\GitHub\CDAparser\CDAparser\bin\CDAparser.dll
+C:\Users\CCC\Documents\GitHub\CDAparser\CDAparser\bin\CDAparser.pdb
+C:\Users\CCC\Documents\GitHub\CDAparser\CDAparser\obj\Release\CDAparser.csprojResolveAssemblyReference.cache
+C:\Users\CCC\Documents\GitHub\CDAparser\CDAparser\obj\Release\CDAparser.dll
+C:\Users\CCC\Documents\GitHub\CDAparser\CDAparser\obj\Release\CDAparser.pdb

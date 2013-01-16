@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href='CDA.xsl' type='text/xsl'?>
+<ClinicalDocument> <!--xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" classCode="DOCCLIN" moodCode="EVN" xsi:schemaLocation="urn:hl7-org:v3 ../schemas/CDA.xsd"-->
+	  <code code="16" displayName="Questionare from CaseManager"/>
+	  <effectiveTime value="20130106"/>
+  
+	  <recordTarget contextControlCode="OP" typeCode="RCT">
+		<patientRole classCode="PAT">
+		  <id extension="1659900384680" root="2.16.840.1.113883.19.2744.1.2"/> 
+		  <patient>
+			<name>
+			  <given>Jirawat</given>
+			  <family>Kittidacha</family>
+			</name>
+			<administrativeGenderCode code="F" codeSystem="2.16.840.1.113883.5.1" codeSystemName="AdministrativeGender" displayName="Female"/> <!--Sex if M is Male,F is Female
+			2.16.840.1.113883.5.1 representing -->
+			<birthTime value="19900429"/>
+		  </patient>
+		</patientRole>
+	  </recordTarget>
+  
+	  <!-- CM ทำการบันทึกข้อมูล-->
+	  <author contextControlCode="OP" typeCode="AUT">
+		<time value="20120430"/>
+		<assignedAuthor>
+		  <id extension="Staff-Code" root="2.16.840.1.113883.19.2744.1.6"/> 
+		  <hostID extension=""/>
+		  <assignedPerson>
+			<name>
+			  <given>Danny</given>
+			  <family>Welbeck</family>
+			</name>
+		  </assignedPerson>
+		</assignedAuthor>
+	  </author>
+
+		<!--สถานที่ CM สังกัดอยุ่-->
+	  <custodian typeCode="CST">
+		<assignedCustodian classCode="ASSIGNED">
+		  <representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+			<id extension="0001" root="2.16.840.1.113883.19.2744.1.3.1"/>
+			<name><!--Organization Name-->Special Education School @ Mae-Hong-Son</name>
+		  </representedCustodianOrganization>
+		</assignedCustodian>
+	  </custodian>
+		<!--หัวหน้าของ CM-->
+	  <legalAuthenticator contextControlCode="OP" typeCode="LA">
+		<time value="201204301253"/>
+		<signatureCode code="S"/>
+		<assignedEntity>
+		  <id extension="S001" root="2.16.840.1.113883.19.2744.1.6"/>
+		  <hostID extension=""/>
+		  <assignedPerson>
+			<name>
+			  <given>Stefano</given>
+			  <family>Mauri</family>
+			</name>
+		  </assignedPerson>
+		</assignedEntity>
+	  </legalAuthenticator>
+  
+		<!--CM ที่ทำการบันทึก-->
+	  <authenticator>
+		<time value="20060622"/>
+		<signatureCode code="S"/>
+		<assignedEntity classCode="ASSIGNED">
+		  <!-- fix root to indicate NJ license -->
+		  <id extension="......" root="2.16.840.1.113883.19.2744.1.6"/>
+		  <hostID extension=""/>
+		  <assignedPerson>
+			<name>
+			  <given>Jonah</given>
+			  <family>Guiterrez</family>
+			</name>
+		  </assignedPerson>
+		</assignedEntity>
+	  </authenticator>
+  
+		<component>
+			<!--ยกตัวอย่างมาแค่ 2 คำถามน่ะ-->
+			<section>
+				<code code="CA002" displayName="แบบสอบถามจาก Case Manager"/>
+			
+				<entry typeCode="DRIV">
+					<observation classCode="OBS" moodCode="RQO">
+						<code code="B110" codeSystem="2.16.840.1.113883.6.500" displayName="ท่านมีปัญหาในการตอบสนองกับสิ่งกระตุ้น หรือการรู้สึกตัว หรือไม่"/> 
+						<value code="0"/> <!--คำตอบของ Questionare -->
+						<effectiveTime>
+							<center value="20120429"/>
+						</effectiveTime>
+					</observation>
+				</entry>	
+				
+				<entry typeCode="DRIV">
+					<observation classCode="OBS" moodCode="RQO">
+						<code code="B110" codeSystem="2.16.840.1.113883.6.500" displayName="ท่านมีปัญหาเกี่ยวกับการทำกิจกรรมที่ใช้ความคิด หรือไม่"/> 
+						<value code="8"/> <!--คำตอบของ Questionare -->
+						<effectiveTime>
+							<center value="20120429"/>
+						</effectiveTime>
+					</observation>
+				</entry>	
+			</section>
+			
+			</section>
+		</component>
+ </ClinicalDocument>

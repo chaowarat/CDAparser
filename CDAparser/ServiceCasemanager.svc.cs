@@ -19,7 +19,7 @@ namespace CDAparser
             return "Hello";
         }
 
-        public XmlElement sendCasemanagerPlanning()
+        public XmlElement getCasemanagerPlanning()
         {
             
             string appPath = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;

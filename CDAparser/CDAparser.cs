@@ -1170,6 +1170,187 @@ namespace CDAparser
             return output;
         }
 
+        public List<CDAEntryOfProfile> getEntryOfProfile(string sectionCode)
+        {
+            List<CDAEntryOfProfile> output = new List<CDAEntryOfProfile>();
+            CDAEntryOfProfile entry;
+            string section = "component/section[code/@code='" + sectionCode + "']/";
+            List<string> typeCode = getInnerTextMultiple(section + "entry/@typeCode");
+            List<string> recordTargetpPatientRoleIdExtension = getInnerTextMultiple(section + "entry/recordTarget/patientRole/id/@extension");
+            List<string> recordTargetpPatientRoleIdRoot = getInnerTextMultiple(section + "entry/recordTarget/patientRole/id/@root");
+            // address
+            List<string> recordTargetpPatientRoleAddrLiveHomeStatus = getInnerTextMultiple(section + "entry/recordTarget/patientRole/addr/LiveHomeStatus");
+            List<string> recordTargetpPatientRoleAddrLiveHouseNumber = getInnerTextMultiple(section + "entry/recordTarget/patientRole/addr/LiveHouseNumber");
+            List<string> recordTargetpPatientRoleAddrLiveMooNumber = getInnerTextMultiple(section + "entry/recordTarget/patientRole/addr/LiveMooNumber");
+            List<string> recordTargetpPatientRoleAddrLiveVillageName = getInnerTextMultiple(section + "entry/recordTarget/patientRole/addr/LiveVillageName");
+            List<string> recordTargetpPatientRoleAddrLiveAlley = getInnerTextMultiple(section + "entry/recordTarget/patientRole/addr/LiveAlley");
+            List<string> recordTargetpPatientRoleAddrLiveStreetName = getInnerTextMultiple(section + "entry/recordTarget/patientRole/addr/LiveStreetName");
+            List<string> recordTargetpPatientRoleAddrLiveTumbon = getInnerTextMultiple(section + "entry/recordTarget/patientRole/addr/LiveTumbon");
+            List<string> recordTargetpPatientRoleAddrLiveCity = getInnerTextMultiple(section + "entry/recordTarget/patientRole/addr/LiveCity");
+            List<string> recordTargetpPatientRoleAddrLiveProvince = getInnerTextMultiple(section + "entry/recordTarget/patientRole/addr/LiveProvince");
+            List<string> recordTargetpPatientRoleAddrLivePostCode = getInnerTextMultiple(section + "entry/recordTarget/patientRole/addr/LivePostCode");
+            List<string> recordTargetpPatientRoleAddrCensusHouseNumber = getInnerTextMultiple(section + "entry/recordTarget/patientRole/addr/CensusHouseNumber");
+            List<string> recordTargetpPatientRoleAddrCensusMooNumber = getInnerTextMultiple(section + "entry/recordTarget/patientRole/addr/CensusMooNumber");
+            List<string> recordTargetpPatientRoleAddrCensusVillageName = getInnerTextMultiple(section + "entry/recordTarget/patientRole/addr/CensusVillageName");
+            List<string> recordTargetpPatientRoleAddrCensusAlley = getInnerTextMultiple(section + "entry/recordTarget/patientRole/addr/CensusAlley");
+            List<string> recordTargetpPatientRoleAddrCensusStreetName = getInnerTextMultiple(section + "entry/recordTarget/patientRole/addr/CensusStreetName");
+            List<string> recordTargetpPatientRoleAddrCensusTumbon = getInnerTextMultiple(section + "entry/recordTarget/patientRole/addr/CensusTumbon");
+            List<string> recordTargetpPatientRoleAddrCensusCity = getInnerTextMultiple(section + "entry/recordTarget/patientRole/addr/CensusCity");
+            List<string> recordTargetpPatientRoleAddrCensusProvince = getInnerTextMultiple(section + "entry/recordTarget/patientRole/addr/CensusProvince");
+            List<string> recordTargetpPatientRoleAddrCensusMoveInDate = getInnerTextMultiple(section + "entry/recordTarget/patientRole/addr/CensusMoveInDate");
+            List<string> recordTargetpPatientRoleAddrCensusMoveOutDate = getInnerTextMultiple(section + "entry/recordTarget/patientRole/addr/CensusMoveOutDate");
+            List<string> recordTargetpPatientRoleAddrCensusMoveOutReason = getInnerTextMultiple(section + "entry/recordTarget/patientRole/addr/CensusMoveOutReason");
+            // End address
+            List<string> recordTargetpPatientRoleHomePhoneValue = getInnerTextMultiple(section + "entry/recordTarget/patientRole/HomePhone/@value");
+            List<string> recordTargetpPatientRoleHomePhoneUse = getInnerTextMultiple(section + "entry/recordTarget/patientRole/HomePhone/@use");
+            List<string> recordTargetpPatientRoleMobileValue = getInnerTextMultiple(section + "entry/recordTarget/patientRole/Mobile/@value");
+
+            List<string> recordTargetpPatientRolePatientNameTitle = getInnerTextMultiple(section + "entry/recordTarget/patientRole/patient/name/title");
+            List<string> recordTargetpPatientRolePatientNameGiven = getInnerTextMultiple(section + "entry/recordTarget/patientRole/patient/name/given");
+            List<string> recordTargetpPatientRolePatientNameFamily = getInnerTextMultiple(section + "entry/recordTarget/patientRole/patient/name/family");
+            List<string> recordTargetpPatientRolePatientAdministrativeGenderCodeCode = getInnerTextMultiple(section + "entry/recordTarget/patientRole/patient/administrativeGenderCode/@code");
+            List<string> recordTargetpPatientRolePatientAdministrativeGenderCodeCodeSystem = getInnerTextMultiple(section + "entry/recordTarget/patientRole/patient/administrativeGenderCode/@codeSystem");
+            List<string> recordTargetpPatientRolePatientBirthTimeValue = getInnerTextMultiple(section + "entry/recordTarget/patientRole/patient/birthTime/@value");
+            List<string> recordTargetpPatientRolePatientSubWelfareIDValue = getInnerTextMultiple(section + "entry/recordTarget/patientRole/patient/subWelfareID/@value");
+            List<string> recordTargetpPatientRolePatientBloodTypeValue = getInnerTextMultiple(section + "entry/recordTarget/patientRole/patient/bloodType/@value");
+            List<string> recordTargetpPatientRolePatientNationValue = getInnerTextMultiple(section + "entry/recordTarget/patientRole/patient/nation/@value");
+            List<string> recordTargetpPatientRolePatientRaceValue = getInnerTextMultiple(section + "entry/recordTarget/patientRole/patient/race/@value");
+            List<string> recordTargetpPatientRolePatientReligionValue = getInnerTextMultiple(section + "entry/recordTarget/patientRole/patient/religion/@value");
+            List<string> recordTargetpPatientRolePatientForeignerValue = getInnerTextMultiple(section + "entry/recordTarget/patientRole/patient/foreigner/@value");
+            List<string> recordTargetpPatientRolePatientChildPicValue = getInnerTextMultiple(section + "entry/recordTarget/patientRole/patient/childPic/@value");
+            List<string> recordTargetpPatientRolePatientChildPicCIDValue = getInnerTextMultiple(section + "entry/recordTarget/patientRole/patient/childPicCID/@value");
+
+            for (int i = 0; i < typeCode.Count; i++)
+            {
+                entry = new CDAEntryOfProfile();
+
+                entry.typeCode = typeCode[i];
+                entry.recordTargetpPatientRoleIdExtension = recordTargetpPatientRoleIdExtension[i];
+                entry.recordTargetpPatientRoleIdRoot = recordTargetpPatientRoleIdRoot[i];
+
+                entry.recordTargetpPatientRoleAddrLiveHomeStatus = recordTargetpPatientRoleAddrLiveHomeStatus[i];
+                entry.recordTargetpPatientRoleAddrLiveHouseNumber = recordTargetpPatientRoleAddrLiveHouseNumber[i];
+                entry.recordTargetpPatientRoleAddrLiveMooNumber = recordTargetpPatientRoleAddrLiveMooNumber[i];
+                entry.recordTargetpPatientRoleAddrLiveVillageName = recordTargetpPatientRoleAddrLiveVillageName[i];
+                entry.recordTargetpPatientRoleAddrLiveAlley = recordTargetpPatientRoleAddrLiveAlley[i];
+                entry.recordTargetpPatientRoleAddrLiveStreetName = recordTargetpPatientRoleAddrLiveStreetName[i];
+                entry.recordTargetpPatientRoleAddrLiveTumbon = recordTargetpPatientRoleAddrLiveTumbon[i];
+                entry.recordTargetpPatientRoleAddrLiveCity = recordTargetpPatientRoleAddrLiveCity[i];
+                entry.recordTargetpPatientRoleAddrLiveProvince = recordTargetpPatientRoleAddrLiveProvince[i];
+                entry.recordTargetpPatientRoleAddrLivePostCode = recordTargetpPatientRoleAddrLivePostCode[i];
+                entry.recordTargetpPatientRoleAddrCensusHouseNumber = recordTargetpPatientRoleAddrCensusHouseNumber[i];
+                entry.recordTargetpPatientRoleAddrCensusMooNumber = recordTargetpPatientRoleAddrCensusMooNumber[i];
+                entry.recordTargetpPatientRoleAddrCensusVillageName = recordTargetpPatientRoleAddrCensusVillageName[i];
+                entry.recordTargetpPatientRoleAddrCensusAlley = recordTargetpPatientRoleAddrCensusAlley[i];
+                entry.recordTargetpPatientRoleAddrCensusStreetName = recordTargetpPatientRoleAddrCensusStreetName[i];
+                entry.recordTargetpPatientRoleAddrCensusTumbon = recordTargetpPatientRoleAddrCensusTumbon[i];
+                entry.recordTargetpPatientRoleAddrCensusCity = recordTargetpPatientRoleAddrCensusCity[i];
+                entry.recordTargetpPatientRoleAddrCensusProvince = recordTargetpPatientRoleAddrCensusProvince[i];
+                entry.recordTargetpPatientRoleAddrCensusMoveInDate = recordTargetpPatientRoleAddrCensusMoveInDate[i];
+                entry.recordTargetpPatientRoleAddrCensusMoveOutDate = recordTargetpPatientRoleAddrCensusMoveOutDate[i];
+                entry.recordTargetpPatientRoleAddrCensusMoveOutReason = recordTargetpPatientRoleAddrCensusMoveOutReason[i];
+
+                entry.recordTargetpPatientRoleHomePhoneValue = recordTargetpPatientRoleHomePhoneValue[i];
+                entry.recordTargetpPatientRoleHomePhoneUse = recordTargetpPatientRoleHomePhoneUse[i];
+                entry.recordTargetpPatientRoleMobileValue = recordTargetpPatientRoleMobileValue[i];
+
+                entry.recordTargetpPatientRolePatientNameTitle = recordTargetpPatientRolePatientNameTitle[i];
+                entry.recordTargetpPatientRolePatientNameGiven = recordTargetpPatientRolePatientNameGiven[i];
+                entry.recordTargetpPatientRolePatientNameFamily = recordTargetpPatientRolePatientNameFamily[i];
+                entry.recordTargetpPatientRolePatientAdministrativeGenderCodeCode = recordTargetpPatientRolePatientAdministrativeGenderCodeCode[i];
+                entry.recordTargetpPatientRolePatientAdministrativeGenderCodeCodeSystem = recordTargetpPatientRolePatientAdministrativeGenderCodeCodeSystem[i];
+                entry.recordTargetpPatientRolePatientBirthTimeValue = recordTargetpPatientRolePatientBirthTimeValue[i];
+                entry.recordTargetpPatientRolePatientSubWelfareIDValue = recordTargetpPatientRolePatientSubWelfareIDValue[i];
+                entry.recordTargetpPatientRolePatientBloodTypeValue = recordTargetpPatientRolePatientBloodTypeValue[i];
+                entry.recordTargetpPatientRolePatientNationValue = recordTargetpPatientRolePatientNationValue[i];
+                entry.recordTargetpPatientRolePatientRaceValue = recordTargetpPatientRolePatientRaceValue[i];
+                entry.recordTargetpPatientRolePatientReligionValue = recordTargetpPatientRolePatientReligionValue[i];
+                entry.recordTargetpPatientRolePatientForeignerValue = recordTargetpPatientRolePatientForeignerValue[i];
+                entry.recordTargetpPatientRolePatientChildPicValue = recordTargetpPatientRolePatientChildPicValue[i];
+                entry.recordTargetpPatientRolePatientChildPicCIDValue = recordTargetpPatientRolePatientChildPicCIDValue[i];
+
+                output.Add(entry);
+            }
+            return output;
+        }
+
+        public void setEntryOfProfile(List<CDAEntryOfProfile> list, string sectionCode, string displayName)
+        {
+            XmlNode componentNode = document.SelectSingleNode("//component");
+            XmlElement section = document.CreateElement("section");
+            XmlElement code = document.CreateElement("code");
+            code.SetAttribute("code", sectionCode);
+            code.SetAttribute("displayName", displayName);
+            section.AppendChild(code);
+
+            foreach (CDAEntryOfProfile entry in list)
+            {
+                XElement en = new XElement("entry",
+                                new XAttribute("typeCode", entry.typeCode),
+                            new XElement("recordTarget",
+                            new XElement("patientRole",
+                            new XElement("id",
+                                new XAttribute("extension", entry.recordTargetpPatientRoleIdExtension),
+                                new XAttribute("root", entry.recordTargetpPatientRoleIdRoot)),
+                            new XElement("addr",
+                                new XElement("LiveHomeStatus", entry.recordTargetpPatientRoleAddrLiveHomeStatus),
+                                new XElement("LiveHouseNumber", entry.recordTargetpPatientRoleAddrLiveHouseNumber),
+                                new XElement("LiveMooNumber", entry.recordTargetpPatientRoleAddrLiveMooNumber),
+                                new XElement("LiveVillageName", entry.recordTargetpPatientRoleAddrLiveVillageName),
+                                new XElement("LiveAlley", entry.recordTargetpPatientRoleAddrLiveAlley),
+                                new XElement("LiveStreetName", entry.recordTargetpPatientRoleAddrLiveStreetName),
+                                new XElement("LiveTumbon", entry.recordTargetpPatientRoleAddrLiveTumbon),
+                                new XElement("LiveCity", entry.recordTargetpPatientRoleAddrLiveCity),
+                                new XElement("LiveProvince", entry.recordTargetpPatientRoleAddrLiveProvince),
+                                new XElement("LivePostCode", entry.recordTargetpPatientRoleAddrLivePostCode),
+                                new XElement("CensusHouseNumber", entry.recordTargetpPatientRoleAddrCensusHouseNumber),
+                                new XElement("CensusMooNumber", entry.recordTargetpPatientRoleAddrCensusMooNumber),
+                                new XElement("CensusVillageName", entry.recordTargetpPatientRoleAddrCensusVillageName),
+                                new XElement("CensusAlley", entry.recordTargetpPatientRoleAddrCensusAlley),
+                                new XElement("CensusStreetName", entry.recordTargetpPatientRoleAddrCensusStreetName),
+                                new XElement("CensusTumbon", entry.recordTargetpPatientRoleAddrCensusTumbon),
+                                new XElement("CensusCity", entry.recordTargetpPatientRoleAddrCensusCity),
+                                new XElement("CensusProvince", entry.recordTargetpPatientRoleAddrCensusProvince),
+                                new XElement("CensusMoveInDate", entry.recordTargetpPatientRoleAddrCensusMoveInDate),
+                                new XElement("CensusMoveOutDate", entry.recordTargetpPatientRoleAddrCensusMoveOutDate),
+                                new XElement("CensusMoveOutReason", entry.recordTargetpPatientRoleAddrCensusMoveOutReason)),
+                            new XElement("HomePhone",
+                                new XAttribute("value", entry.recordTargetpPatientRoleHomePhoneValue),
+                                new XAttribute("use", entry.recordTargetpPatientRoleHomePhoneUse)),
+                            new XElement("Mobile",
+                                new XAttribute("value", entry.recordTargetpPatientRoleMobileValue)),
+                            new XElement("patient",
+                                new XElement("name",
+                                    new XElement("title", entry.recordTargetpPatientRolePatientNameTitle),
+                                    new XElement("given", entry.recordTargetpPatientRolePatientNameGiven),
+                                    new XElement("family", entry.recordTargetpPatientRolePatientNameFamily)),
+                            new XElement("administrativeGenderCode",
+                                new XAttribute("code", entry.recordTargetpPatientRolePatientAdministrativeGenderCodeCode),
+                                new XAttribute("codeSystem", entry.recordTargetpPatientRolePatientAdministrativeGenderCodeCodeSystem)),
+                            new XElement("birthTime",
+                                new XAttribute("value", entry.recordTargetpPatientRolePatientBirthTimeValue)),
+                            new XElement("subWelfareID",
+                                new XAttribute("value", entry.recordTargetpPatientRolePatientSubWelfareIDValue)),
+                            new XElement("bloodType",
+                                new XAttribute("value", entry.recordTargetpPatientRolePatientBloodTypeValue)),
+                            new XElement("nation",
+                                new XAttribute("value", entry.recordTargetpPatientRolePatientNationValue)),
+                            new XElement("race",
+                                new XAttribute("value", entry.recordTargetpPatientRolePatientRaceValue)),
+                            new XElement("religion",
+                                new XAttribute("value", entry.recordTargetpPatientRolePatientReligionValue)),
+                            new XElement("foreigner",
+                                new XAttribute("value", entry.recordTargetpPatientRolePatientForeignerValue)),
+                            new XElement("childPic",
+                                new XAttribute("value", entry.recordTargetpPatientRolePatientChildPicValue)),
+                            new XElement("childPicCID",
+                                new XAttribute("value", entry.recordTargetpPatientRolePatientChildPicCIDValue))
+                            )))
+                        );
+                section.AppendChild(toXmlElement(en, document));
+            }
+            componentNode.AppendChild(section);
+        }
 
     }
 }

@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="CDAparser.ServiceCasemanager" CodeBehind="ServiceCasemanager.svc.cs" Factory="System.ServiceModel.Activation.WebServiceHostFactory"%>
