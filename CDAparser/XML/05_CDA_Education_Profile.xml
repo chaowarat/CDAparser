@@ -62,8 +62,7 @@
   
 		<component>
 		
-			<section>
-			<code code="ED010" displayName="รายละเอียดการลงทะเบียนเด็กใหม่จากศูนย์การศึกษาพิเศษ"/>
+			<section code="ED010" displayName="รายละเอียดการลงทะเบียนเด็กใหม่จากศูนย์การศึกษาพิเศษ">
 			
 			<entry typeCode="DRIV">
 				<recordTarget>
@@ -113,7 +112,9 @@
 				</patient>
         </patientRole>
 				</recordTarget>
-			</entry>		
+			</entry>
+			
+			
 			</section>
 		</component>
 	</ClinicalDocument>

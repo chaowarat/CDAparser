@@ -64,8 +64,7 @@
   </authenticator>
   
 		<component>
-			<section>
-			<code code="CA001" displayName="ข้อมูลลงทะเบียนจาก Case Manager"/>
+			<section code="CA001" displayName="ข้อมูลลงทะเบียนจาก Case Manager">
 			
 			<entry typeCode="DRIV">
 				<recordTarget>

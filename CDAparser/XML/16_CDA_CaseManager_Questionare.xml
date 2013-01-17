@@ -77,9 +77,9 @@
 	  </authenticator>
   
 		<component>
+			<planNumber planNumber="3"/>
 			<!--ยกตัวอย่างมาแค่ 2 คำถามน่ะ-->
-			<section>
-				<code code="CA002" displayName="แบบสอบถามจาก Case Manager"/>
+			<section code="CA002" displayName="แบบสอบถามจาก Case Manager">
 			
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
@@ -102,6 +102,5 @@
 				</entry>	
 			</section>
 			
-			</section>
 		</component>
  </ClinicalDocument>

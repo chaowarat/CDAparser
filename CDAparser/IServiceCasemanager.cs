@@ -17,7 +17,7 @@ namespace CDAparser
         string DoWork();
 
         [OperationContract]
-        [WebGet(UriTemplate = "/getCasemanagerPlanning")]
-        XmlElement getCasemanagerPlanning();
+        [WebGet(UriTemplate = "/getCasemanagerPlan")]
+        XmlElement getCasemanagerPlan();
     }
 }

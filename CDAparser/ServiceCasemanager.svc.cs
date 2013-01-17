@@ -19,12 +19,17 @@ namespace CDAparser
             return "Hello";
         }
 
-        public XmlElement getCasemanagerPlanning()
+        public XmlElement getCasemanagerPlan()
         {
             
             string appPath = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
             string xmlFile = Path.Combine(appPath, @"XML/17_CDA_CaseManager_Planning.xml");
             CDAparser parser = new CDAparser(xmlFile);
+
+            // Ex.
+            //Person data = (from a in casemanager.Persons select a).First();
+            //parser.setCDAcode(data.CID.Trim());
+            //parser.setCDAcustodianTypeCode(data.CID.Trim());
 
             return parser.getDocument().DocumentElement;
         }

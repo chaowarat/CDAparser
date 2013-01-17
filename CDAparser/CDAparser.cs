@@ -1002,7 +1002,7 @@ namespace CDAparser
         {
             List<CDAEntry> output = new List<CDAEntry>();
             CDAEntry entry;
-            string section = "component/section[code/@code='" + sectionCode + "']/";
+            string section = "component/section[@code='" + sectionCode + "']/";
 
             List<string> typeCode = getInnerTextMultiple(section + "entry/@typeCode");
             List<string> observationClassCode = getInnerTextMultiple(section + "entry/observation/@classCode");
@@ -1032,14 +1032,12 @@ namespace CDAparser
             return document.ReadNode(xelement.CreateReader()) as XmlElement;
         }
 
-        public void setSectionOfEntry(List<CDAEntry> list, string sectionCode, string displayName)
+        public void setEntryList(List<CDAEntry> list, string sectionCode, string displayName)
         {
             XmlNode componentNode = document.SelectSingleNode("//component");
             XmlElement section = document.CreateElement("section");
-            XmlElement code = document.CreateElement("code");
-            code.SetAttribute("code", sectionCode);
-            code.SetAttribute("displayName", displayName);
-            section.AppendChild(code);
+            section.SetAttribute("code", sectionCode);
+            section.SetAttribute("displayName", displayName);
 
             foreach(CDAEntry entry in list)
             {
@@ -1168,13 +1166,13 @@ namespace CDAparser
                 output.Add(entry);
             }
             return output;
-        }
+        }  // not use this time
 
         public List<CDAEntryOfProfile> getEntryOfProfile(string sectionCode)
         {
             List<CDAEntryOfProfile> output = new List<CDAEntryOfProfile>();
             CDAEntryOfProfile entry;
-            string section = "component/section[code/@code='" + sectionCode + "']/";
+            string section = "component/section[@code='" + sectionCode + "']/";
             List<string> typeCode = getInnerTextMultiple(section + "entry/@typeCode");
             List<string> recordTargetpPatientRoleIdExtension = getInnerTextMultiple(section + "entry/recordTarget/patientRole/id/@extension");
             List<string> recordTargetpPatientRoleIdRoot = getInnerTextMultiple(section + "entry/recordTarget/patientRole/id/@root");
@@ -1278,10 +1276,8 @@ namespace CDAparser
         {
             XmlNode componentNode = document.SelectSingleNode("//component");
             XmlElement section = document.CreateElement("section");
-            XmlElement code = document.CreateElement("code");
-            code.SetAttribute("code", sectionCode);
-            code.SetAttribute("displayName", displayName);
-            section.AppendChild(code);
+            section.SetAttribute("code", sectionCode);
+            section.SetAttribute("displayName", displayName);
 
             foreach (CDAEntryOfProfile entry in list)
             {

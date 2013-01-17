@@ -39,10 +39,10 @@ namespace CDAparser
             //CDAEntryOfProfile cda = new CDAEntryOfProfile();
             //XmlElement test = cda.getXMLelement(new XmlDocument());
             //int a = 0;
-            List<CDAEntry> test = parser.getEntryList("ED006");
+            List<CDAEntry> test = parser.getEntryList("ED003");
             foreach (CDAEntry a in test)
             {
-                ListBox1.Items.Add(a.typeCode + " " + a.observationDisplayName);
+                ListBox1.Items.Add(a.typeCode + " " + a.observationCode);
             }
 
         }

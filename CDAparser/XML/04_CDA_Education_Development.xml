@@ -76,8 +76,7 @@
   </authenticator>
   
 		<component>
-		<section>
-			<code code="E009" displayName="กิจกรรมส่งเสริมพัฒนาการ"/>
+		<section code="E009" displayName="กิจกรรมส่งเสริมพัฒนาการ">
 			
 			<entry typeCode="DRIV">
 				<observation classCode="OBS" moodCode="RQO">

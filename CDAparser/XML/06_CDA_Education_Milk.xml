@@ -62,8 +62,7 @@
   
 		
 		<component>
-			<section>
-			<code code="ED011" displayName="รายชื่อเด็กได้รับอาหารเสริมนมและอาหารกลางวัน"/>
+			<section code="ED011" displayName="รายชื่อเด็กได้รับอาหารเสริมนมและอาหารกลางวัน">
 			
 			<entry typeCode="DRIV">
 				<recordTarget>

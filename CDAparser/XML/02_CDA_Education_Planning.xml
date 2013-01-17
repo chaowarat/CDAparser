@@ -77,8 +77,7 @@
   
 		<component>
 		<planNumber planNumber="3"/>
-			<section>
-				<code code="ED007" displayName="การวางแผนการให้บริการจากศูนย์การศึกษาพิเศษ"/>
+			<section code="ED007" displayName="การวางแผนการให้บริการจากศูนย์การศึกษาพิเศษ">
 
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">

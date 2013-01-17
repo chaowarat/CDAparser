@@ -78,8 +78,7 @@
 		<component>
 			<planNumber planNumber="3"/>
 			<!--การวินิจฉัยความบกพร่องทางการแพทย์-->
-			<section>
-				<code code="ED001" displayName="การวินิจฉัยความบกพร่องทางการแพทย์"/>
+			<section code="ED001" displayName="การวินิจฉัยความบกพร่องทางการแพทย์">
 			
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
@@ -92,8 +91,7 @@
 			</section>
 			
 			<!--ข้อควรพิจารณาประวัติทางการแพทย์-->
-			<section>
-				<code code="ED002" displayName="ข้อควรพิจารณาประวัติทางการแพทย์"/>
+			<section code="ED002" displayName="ข้อควรพิจารณาประวัติทางการแพทย์">
 			
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
@@ -115,8 +113,7 @@
 				</entry>		
 			</section>
 			
-			<section>
-				<code code="ED003" displayName="การได้ยิน"/>
+			<section code="ED003" displayName="การได้ยิน">
 			
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
@@ -128,8 +125,7 @@
 				</entry>	
 			</section>
 			
-			<section>
-				<code code="ED004" displayName="การเคลื่อนไหว"/>
+			<section code="ED004" displayName="การเคลื่อนไหว">
 				
 				<!--ถ้า Value = 0 ไม่สามารถทำงานได้-->
 				<!--ถ้า Value = 1 ทำงานได้บ้าง-->
@@ -256,9 +252,8 @@
 				</entry>
 			</section>
 			
-			<section>
+			<section code="ED005" displayName="การช่วยเหลือตนเอง">
 				<!--การช่วยเหลือตนเอง ไม่มี ICF-->
-				<code code="ED005" displayName="การช่วยเหลือตนเอง"/>
 				
 				<!--ถ้า Value = 0 ทำไม่ได้-->
 				<!--ถ้า Value = 1 ทำได้แต่ต้องช่วยเหลือ-->
@@ -445,8 +440,7 @@
 				</entry>
 			</section>
 			
-			<section>
-				<code code="ED006" displayName="ข้อมูลเกี่ยวกับกิจกรรม/สิ่งของ/บุคคลที่นักเรียนชอบ"/>
+			<section code="ED006" displayName="ข้อมูลเกี่ยวกับกิจกรรม/สิ่งของ/บุคคลที่นักเรียนชอบ">
 				<entry typeCode="DRIV">
 					<observation classCode="OBS" moodCode="RQO">
 						<code code="" codeSystem="2.16.840.1.113883.6.500" displayName="กิจกรรมหรือสิ่งของที่นักเรียนชอบ"/> 
