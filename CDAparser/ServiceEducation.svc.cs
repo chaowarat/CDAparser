@@ -6,19 +6,19 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using System.Web;
 using System.Xml;
 
 namespace CDAparser
 {
-    public class ServiceCasemanager : IServiceCasemanager
+    public class ServiceEducation : IServiceEducation
     {
-        //static BbCasemanagerDataContext casemanager = new BbCasemanagerDataContext();
+        //static CasemanagerDataContext casemanager = new CasemanagerDataContext();
+        static EducationDataContext education = new EducationDataContext();
 
-        public XmlElement getCasemanagerPlan()
+        public XmlElement getEducationEvaluation()
         {
             string appPath = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
-            string xmlFile = Path.Combine(appPath, @"XML/17_CDA_CaseManager_Planning.xml");
+            string xmlFile = Path.Combine(appPath, @"XML/01_CDA_Education_Evaluation.xml");
             CDAparser parser = new CDAparser(xmlFile);
 
             string timeNow = DateTime.Now.ToString("yyyyMMdd", CultureInfo.InvariantCulture);
@@ -30,10 +30,19 @@ namespace CDAparser
             //parser.setCDArecordTargetPatientRolePatientAdministrativeGenderCodeDisplayName();
             //parser.setCDArecordTargetPatientRolePatientBirthTime();
 
-            parser.setCDAauthorTimeValue(timeNow);         
+            parser.setCDAauthorTimeValue(timeNow);
 
             return parser.getDocument().DocumentElement;
         }
 
+        public void setEducationEvaluation(string data)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(data);
+
+            CDAparser parser = new CDAparser(doc);
+            
+
+        }
     }
 }

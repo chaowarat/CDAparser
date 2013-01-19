@@ -5,6 +5,5 @@ c:\users\ccc\documents\visual studio 2012\Projects\CDAparser\CDAparser\obj\Debug
 C:\Users\CCC\Documents\Visual Studio 2012\Projects\CDAparser\CDAparser\obj\Debug\CDAparser.csprojResolveAssemblyReference.cache
 C:\Users\CCC\Documents\GitHub\CDAparser\CDAparser\bin\CDAparser.dll
 C:\Users\CCC\Documents\GitHub\CDAparser\CDAparser\bin\CDAparser.pdb
-C:\Users\CCC\Documents\GitHub\CDAparser\CDAparser\obj\Debug\CDAparser.csprojResolveAssemblyReference.cache
 C:\Users\CCC\Documents\GitHub\CDAparser\CDAparser\obj\Debug\CDAparser.dll
 C:\Users\CCC\Documents\GitHub\CDAparser\CDAparser\obj\Debug\CDAparser.pdb

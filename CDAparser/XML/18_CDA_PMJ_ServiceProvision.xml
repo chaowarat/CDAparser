@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href='CDA.xsl' type='text/xsl'?>
+<ClinicalDocument> <!--xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" classCode="DOCCLIN" moodCode="EVN" xsi:schemaLocation="urn:hl7-org:v3 ../schemas/CDA.xsd"-->
+  <code code="18" displayName="Service Provision From PMJ"/>
+  <effectiveTime value="20130106"/>
+  
+  <recordTarget contextControlCode="OP" typeCode="RCT">
+    <patientRole classCode="PAT">
+      <id extension="1659900384680" root="2.16.840.1.113883.19.2744.1.2"/> <!--2.16.840.1.113883.19.2744.1.2 represent Patient , id extension = "Child ID" -->
+      <patient>
+        <name>
+          <given>Jirawat</given>
+          <family>Kittidacha</family>
+        </name>
+        <administrativeGenderCode code="F" codeSystem="2.16.840.1.113883.5.1" codeSystemName="AdministrativeGender" displayName="Female"/> <!--Sex if M is Male,F is Female
+		2.16.840.1.113883.5.1 representing -->
+		<birthTime value="19900429"/>
+      </patient>
+    </patientRole>
+  </recordTarget>
+  
+  <!-- เจ้าหน้าที่ พมจ ที่ทำการบันทึกข้อมูล-->
+  <author contextControlCode="OP" typeCode="AUT">
+    <time value="20120430"/>
+    <assignedAuthor>
+      <id extension="Staff-Code" root="2.16.840.1.113883.19.2744.1.6"/> 
+	  <hostID extension=""/>
+      <assignedPerson>
+        <name>
+          <given>Danny</given>
+          <family>Welbeck</family>
+        </name>
+      </assignedPerson>
+    </assignedAuthor>
+  </author>
+
+  <!--หน่วยงานที่เจ้าหน้าที่ พมจ สังกัดอยุ่-->
+  <custodian typeCode="CST">
+    <assignedCustodian classCode="ASSIGNED">
+      <representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+        <id extension="0001" root="2.16.840.1.113883.19.2744.1.3.1"/>
+		<name><!--Organization Name--></name>
+      </representedCustodianOrganization>
+    </assignedCustodian>
+  </custodian>
+
+  <!--หัวหน้าของเจ้าหน้าที่ พมจ-->
+  <legalAuthenticator contextControlCode="OP" typeCode="LA">
+    <time value="201204301253"/>
+    <signatureCode code="S"/>
+    <assignedEntity>
+      <id extension="S001" root="2.16.840.1.113883.19.2744.1.6"/>
+	  <hostID extension=""/>
+      <assignedPerson>
+        <name>
+          <given>Stefano</given>
+          <family>Mauri</family>
+        </name>
+      </assignedPerson>
+    </assignedEntity>
+  </legalAuthenticator>
+  
+<!--เจ้าหน้าที่ พมจ ที่บันทึกข้อมูล-->
+  <authenticator>
+    <time value="20060622"/>
+    <signatureCode code="S"/>
+    <assignedEntity classCode="ASSIGNED">
+      <!-- fix root to indicate NJ license -->
+      <id extension="......" root="2.16.840.1.113883.19.2744.1.6"/>
+	  <hostID extension=""/>
+      <assignedPerson>
+        <name>
+          <given>Jonah</given>
+          <family>Guiterrez</family>
+        </name>
+      </assignedPerson>
+    </assignedEntity>
+  </authenticator>
+  
+		<component>
+		<planNumber planNumber="3"/>
+		<section code="PM003" displayName="การให้บริการจาก พมจ.">
+			
+			<entry typeCode="DRIV">
+				<observation classCode="OBS" moodCode="RQO">
+					<code code="e1151.301" codeSystem="2.16.840.1.113883.6.500" displayName="อุปกรณ์ทางการแพทย์สำหรับผู้พิการ 15,000 บาท"/>  
+					<effectiveTime>
+						<center value="20120429"/>
+					</effectiveTime>
+				</observation>
+			</entry>
+			
+		</section>
+	  </component>
+ </ClinicalDocument>

@@ -9,11 +9,12 @@ using System.Xml;
 
 namespace CDAparser
 {
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "ISDHS" in both code and config file together.
     [ServiceContract]
-    public interface IServiceCasemanager
+    public interface ISDHS
     {
         [OperationContract]
-        [WebGet(UriTemplate = "/getCasemanagerPlan")]
-        XmlElement getCasemanagerPlan();
+        [WebGet(UriTemplate = "/getSDHSProfile")]
+        XmlElement getSDHSProfile();
     }
 }

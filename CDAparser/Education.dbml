@@ -1,0 +1,837 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SP" Class="EducationDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=CCC-PC;Initial Catalog=SP;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="SPConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Activity" Member="Activities">
+    <Type Name="Activity">
+      <Column Name="ACTCode" Type="System.String" DbType="VarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ACTDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="SVCCode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="Activity_ConditionActivity" Member="ConditionActivities" ThisKey="ACTCode" OtherKey="ACTCode" Type="ConditionActivity" />
+      <Association Name="Activity_Plannig" Member="Plannigs" ThisKey="ACTCode" OtherKey="SACTCode" Type="Plannig" />
+      <Association Name="Activity_SubActivity" Member="SubActivities" ThisKey="ACTCode" OtherKey="ACTCode" Type="SubActivity" />
+      <Association Name="Service_Activity" Member="Service" ThisKey="SVCCode" OtherKey="SVCCode" Type="Service" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WelfareCategory" Member="WelfareCategories">
+    <Type Name="WelfareCategory">
+      <Column Name="WelfareID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="WelfareDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ActivityCost" Member="ActivityCosts">
+    <Type Name="ActivityCost">
+      <Column Name="ACTCode" Type="System.String" DbType="Char(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Unit" Type="System.String" DbType="Char(255)" CanBeNull="true" />
+      <Column Name="LabourCost" Type="System.String" DbType="Char(255)" CanBeNull="true" />
+      <Column Name="MaterialCost" Type="System.String" DbType="Char(255)" CanBeNull="true" />
+      <Column Name="CC_Equipment" Type="System.String" DbType="Char(255)" CanBeNull="true" />
+      <Column Name="CC_Building" Type="System.String" DbType="Char(255)" CanBeNull="true" />
+      <Column Name="IndirectCost" Type="System.String" DbType="Char(255)" CanBeNull="true" />
+      <Column Name="ProposedCost" Type="System.String" DbType="Char(255)" CanBeNull="true" />
+      <Column Name="CurrentCost" Type="System.String" DbType="Char(255)" CanBeNull="true" />
+      <Column Name="UnitCost" Type="System.String" DbType="Char(255)" CanBeNull="true" />
+      <Column Name="ReferencedCostOrg" Type="System.String" DbType="Char(255)" CanBeNull="true" />
+      <Column Name="TimsStamp" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="AID" Type="System.String" DbType="Char(255)" CanBeNull="true" />
+      <Association Name="Annotation_ActivityCost" Member="Annotation" ThisKey="AID" OtherKey="AID" Type="Annotation" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AgeType" Member="AgeTypes">
+    <Type Name="AgeType">
+      <Column Name="AgeCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AgeRange" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MinAgeRange" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MaxAgeRange" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Annotation" Member="Annotations">
+    <Type Name="Annotation">
+      <Column Name="AID" Type="System.String" DbType="Char(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AText" Type="System.String" DbType="Char(255)" CanBeNull="true" />
+      <Column Name="AnnotationID" Type="System.String" DbType="Char(255)" CanBeNull="true" />
+      <Column Name="Reference" Type="System.String" DbType="Char(255)" CanBeNull="true" />
+      <Association Name="Annotation_ActivityCost" Member="ActivityCosts" ThisKey="AID" OtherKey="AID" Type="ActivityCost" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BloodType" Member="BloodTypes">
+    <Type Name="BloodType">
+      <Column Name="BloodTypeID" Type="System.String" DbType="VarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="BloodTypeDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.City" Member="Cities">
+    <Type Name="City">
+      <Column Name="CityID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CityDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ProvinceID" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Condition" Member="Conditions">
+    <Type Name="Condition">
+      <Column Name="ConditionCode" Type="System.String" DbType="Char(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ConditionDesc" Type="System.String" DbType="Char(255)" CanBeNull="true" />
+      <Column Name="Condition" Member="Condition1" Type="System.String" DbType="Char(255)" CanBeNull="true" />
+      <Association Name="Condition_ConditionActivity" Member="ConditionActivities" ThisKey="ConditionCode" OtherKey="ConditionCode" Type="ConditionActivity" />
+      <Association Name="Condition_ConditionService" Member="ConditionService" ThisKey="ConditionCode" OtherKey="ConditionCode" Type="ConditionService" Cardinality="One" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ConditionActivity" Member="ConditionActivities">
+    <Type Name="ConditionActivity">
+      <Column Name="ConditionCode" Type="System.String" DbType="Char(255)" CanBeNull="true" />
+      <Column Name="ACTCode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="Activity_ConditionActivity" Member="Activity" ThisKey="ACTCode" OtherKey="ACTCode" Type="Activity" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="Condition_ConditionActivity" Member="Condition" ThisKey="ConditionCode" OtherKey="ConditionCode" Type="Condition" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ConditionService" Member="ConditionServices">
+    <Type Name="ConditionService">
+      <Column Name="ConditionCode" Type="System.String" DbType="Char(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SVCCODE" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="Condition_ConditionService" Member="Condition" ThisKey="ConditionCode" OtherKey="ConditionCode" Type="Condition" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Service_ConditionService" Member="Service" ThisKey="SVCCODE" OtherKey="SVCCode" Type="Service" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DisabilityEvaluation" Member="DisabilityEvaluations">
+    <Type Name="DisabilityEvaluation">
+      <Column Name="CID" Type="System.String" DbType="VarChar(13) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CaseNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DisabilityCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RecorderID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EvalDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Evaluation_DisabilityEvaluation" Member="Evaluation" ThisKey="CID,CaseNo" OtherKey="CID,CaseNo" Type="Evaluation" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DisabilityEvaluation_log" Member="DisabilityEvaluation_logs">
+    <Type Name="DisabilityEvaluation_log">
+      <Column Name="CID" Type="System.String" DbType="VarChar(13) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CaseNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DisabilityCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RecorderID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EvalDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DisabilityType" Member="DisabilityTypes">
+    <Type Name="DisabilityType">
+      <Column Name="DisabilityCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.education" Member="educations">
+    <Type Name="education">
+      <Column Name="CID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="code" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Note" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="[update]" Member="update" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.education_log" Member="education_logs">
+    <Type Name="education_log">
+      <Column Name="CID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="code" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Note" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="[update]" Member="update" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EducationChild" Member="EducationChilds">
+    <Type Name="EducationChild">
+      <Column Name="CID" Type="System.String" DbType="VarChar(13) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EducationStatusID" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="SchoolName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Class" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="NameofHumanAtSchool" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="TelSchool" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="lastupdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EducationLevel" Member="EducationLevels">
+    <Type Name="EducationLevel">
+      <Column Name="EducationLevelID" Type="System.String" DbType="VarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EducationLevelDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EducationStatus" Member="EducationStatus">
+    <Type Name="EducationStatus">
+      <Column Name="EducationStatusID" Type="System.String" DbType="VarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EducationStatus" Member="EducationStatus1" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Employee" Member="Employees">
+    <Type Name="Employee">
+      <Column Name="Staff_id" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Dept_id" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Firstname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Lastname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DOB" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="StreetAddress" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="VILLAGE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TAMBON" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AMPUR" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CHANGWAT" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MSTATUS" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OCCUPA" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RACE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NATION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RELIGION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EDUCATE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SDATE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Username" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Activated" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="HostID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Employee_Role_Staff" Member="Role_Staffs" ThisKey="Staff_id" OtherKey="Staff_id" Type="Role_Staff" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Evaluation" Member="Evaluations">
+    <Type Name="Evaluation">
+      <Column Name="CID" Type="System.String" DbType="VarChar(13) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CaseNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HostCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="StaffCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="HostID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="StaffID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Co1Code" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Co2Code" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Co3Code" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Co4Code" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EvalDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Evaluation_DisabilityEvaluation" Member="DisabilityEvaluations" ThisKey="CID,CaseNo" OtherKey="CID,CaseNo" Type="DisabilityEvaluation" />
+      <Association Name="Evaluation_FavorList" Member="FavorLists" ThisKey="CID,CaseNo" OtherKey="CID,CaseNo" Type="FavorList" />
+      <Association Name="Evaluation_GrowthEvaluation" Member="GrowthEvaluations" ThisKey="CID,CaseNo" OtherKey="CID,CaseNo" Type="GrowthEvaluation" />
+      <Association Name="Evaluation_HealthEvaluation" Member="HealthEvaluations" ThisKey="CID,CaseNo" OtherKey="CID,CaseNo" Type="HealthEvaluation" />
+      <Association Name="Evaluation_HearEvaluation" Member="HearEvaluations" ThisKey="CID,CaseNo" OtherKey="CID,CaseNo" Type="HearEvaluation" />
+      <Association Name="Evaluation_PhysicalEvaluation" Member="PhysicalEvaluations" ThisKey="CID,CaseNo" OtherKey="CID,CaseNo" Type="PhysicalEvaluation" />
+      <Association Name="Evaluation_SightEvaluation" Member="SightEvaluations" ThisKey="CID,CaseNo" OtherKey="CID,CaseNo" Type="SightEvaluation" />
+      <Association Name="Evaluation_Tool" Member="Tools" ThisKey="CID,CaseNo" OtherKey="CID,CaseNo" Type="Tool" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ExistingWelfare" Member="ExistingWelfares">
+    <Type Name="ExistingWelfare">
+      <Column Name="CID" Type="System.String" DbType="VarChar(13) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="InsuranceOrg" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="InsuranceType" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="InsuranceCardID" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="InsuranceCardIssueDate" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="InsuranceCardExpDate" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="InsurancePCU" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="InsuranceHospital" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DisableType" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DisabilityType" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DisableCardID" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DisableCardIssueDate" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DisableCardExpDate" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DisabilityAllowance" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CouponStudy" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DateTimeUpdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="InsuranceCardPic" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DisableCardIDPic" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Family" Member="Families">
+    <Type Name="Family">
+      <Column Name="FMemberCID" Type="System.String" DbType="VarChar(13) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CID" Type="System.String" DbType="VarChar(13) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Relation" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MariageStatus" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LiveStatus" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="EducationLevel" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Occupation" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Nation" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Race" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Religion" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="AddressOccupation" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="IncomePerMonth" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="OtherIncome" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="OtherIncomeFrom" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LiveHouseNumber" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LiveMooNumber" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LiveVillageName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LiveAlley" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LiveStreetName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LiveTumbon" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LiveCity" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LiveProvince" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LivePostCode" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LiveMoveInDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LiveMoveOutDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LiveMoveOutReason" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CensusHouseNumber" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CensusMooNumber" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CensusVillageName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CensusAlley" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CensusStreetName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CensusTumbon" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CensusCity" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CensusProvince" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CensusPostCode" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CensusMoveInDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CensusMoveOutDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CensusMoveOutReason" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CarerStatus" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="DateTimeUpdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FavorItem" Member="FavorItems">
+    <Type Name="FavorItem">
+      <Column Name="FavorItemCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="FavorItem_FavorList" Member="FavorLists" ThisKey="FavorItemCode" OtherKey="FavorItemCode" Type="FavorList" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FavorList" Member="FavorLists">
+    <Type Name="FavorList">
+      <Column Name="CID" Type="System.String" DbType="VarChar(13) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CaseNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FavorItemCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FavorItemDescription" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RecorderID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EvalDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Evaluation_FavorList" Member="Evaluation" ThisKey="CID,CaseNo" OtherKey="CID,CaseNo" Type="Evaluation" IsForeignKey="true" />
+      <Association Name="FavorItem_FavorList" Member="FavorItem" ThisKey="FavorItemCode" OtherKey="FavorItemCode" Type="FavorItem" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FavorList_log" Member="FavorList_logs">
+    <Type Name="FavorList_log">
+      <Column Name="CID" Type="System.String" DbType="VarChar(13) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CaseNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FavorItemCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FavorItemDescription" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RecorderID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EvalDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Foreigner" Member="Foreigners">
+    <Type Name="Foreigner">
+      <Column Name="ForeignTypeID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ForeignTypeDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GrowthEvaluation" Member="GrowthEvaluations">
+    <Type Name="GrowthEvaluation">
+      <Column Name="CID" Type="System.String" DbType="VarChar(13) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CaseNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SACTCode" Type="System.String" DbType="VarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SACTValue" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Association Name="Evaluation_GrowthEvaluation" Member="Evaluation" ThisKey="CID,CaseNo" OtherKey="CID,CaseNo" Type="Evaluation" IsForeignKey="true" />
+      <Association Name="SubActivity_GrowthEvaluation" Member="SubActivity" ThisKey="SACTCode" OtherKey="SACTCode" Type="SubActivity" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GrowthEvaluation2" Member="GrowthEvaluation2s">
+    <Type Name="GrowthEvaluation2">
+      <Column Name="CID" Type="System.String" DbType="VarChar(13) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CaseNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SACT2Code" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SACTValue" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HealthEvaluation" Member="HealthEvaluations">
+    <Type Name="HealthEvaluation">
+      <Column Name="CID" Type="System.String" DbType="VarChar(13) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CaseNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HealthEvalCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RecorderID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EvalDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Evaluation_HealthEvaluation" Member="Evaluation" ThisKey="CID,CaseNo" OtherKey="CID,CaseNo" Type="Evaluation" IsForeignKey="true" />
+      <Association Name="HealthProblem_HealthEvaluation" Member="HealthProblem" ThisKey="HealthEvalCode" OtherKey="HealthEvalCode" Type="HealthProblem" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HealthEvaluation_log" Member="HealthEvaluation_logs">
+    <Type Name="HealthEvaluation_log">
+      <Column Name="CID" Type="System.String" DbType="VarChar(13) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CaseNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HealthEvalCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RecorderID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EvalDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.healthinfo" Member="healthinfos">
+    <Type Name="healthinfo">
+      <Column Name="CID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="code" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Note" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="[update]" Member="update" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.healthinfo_log" Member="healthinfo_logs">
+    <Type Name="healthinfo_log">
+      <Column Name="CID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="code" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Note" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="[update]" Member="update" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HealthProblem" Member="HealthProblems">
+    <Type Name="HealthProblem">
+      <Column Name="HealthEvalCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="HealthProblem_HealthEvaluation" Member="HealthEvaluations" ThisKey="HealthEvalCode" OtherKey="HealthEvalCode" Type="HealthEvaluation" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HearEvaluation" Member="HearEvaluations">
+    <Type Name="HearEvaluation">
+      <Column Name="CID" Type="System.String" DbType="VarChar(13) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CaseNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HearEvalCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RecorderID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EvalDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Evaluation_HearEvaluation" Member="Evaluation" ThisKey="CID,CaseNo" OtherKey="CID,CaseNo" Type="Evaluation" IsForeignKey="true" />
+      <Association Name="HearProblem_HearEvaluation" Member="HearProblem" ThisKey="HearEvalCode" OtherKey="HearEvalCode" Type="HearProblem" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HearEvaluation_log" Member="HearEvaluation_logs">
+    <Type Name="HearEvaluation_log">
+      <Column Name="CID" Type="System.String" DbType="VarChar(13) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CaseNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HearEvalCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RecorderID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EvalDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HearProblem" Member="HearProblems">
+    <Type Name="HearProblem">
+      <Column Name="HearEvalCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="HearProblem_HearEvaluation" Member="HearEvaluations" ThisKey="HearEvalCode" OtherKey="HearEvalCode" Type="HearEvaluation" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[HL7 Gender Standard]" Member="HL7_Gender_Standards">
+    <Type Name="HL7_Gender_Standard">
+      <Column Name="GenderCode" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="GenderThaiDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="GenderEnglishDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Host" Member="Hosts">
+    <Type Name="Host">
+      <Column Name="HostID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HostName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="HostStreetAddress" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="HostStreetName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="HostCity" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="HostProvince" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="HostPostcode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ProviderCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Provider_Host" Member="Provider" ThisKey="ProviderCode" OtherKey="ProviderCode" Type="Provider" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InsuranceCard" Member="InsuranceCards">
+    <Type Name="InsuranceCard">
+      <Column Name="id" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="dec" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LiveHomeStatus" Member="LiveHomeStatus">
+    <Type Name="LiveHomeStatus">
+      <Column Name="LiveHomeStatusID" Type="System.String" DbType="VarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LiveHomeStatusDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LiveStatus" Member="LiveStatus">
+    <Type Name="LiveStatus">
+      <Column Name="LiveStatusID" Type="System.String" DbType="VarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LiveStatusDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MariageStatus" Member="MariageStatus">
+    <Type Name="MariageStatus">
+      <Column Name="MariageStatusID" Type="System.String" DbType="VarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MariageStatusDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Material" Member="Materials">
+    <Type Name="Material">
+      <Column Name="MaterialCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaterialDesc" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EstimatedPrice" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="RealPrice" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="SVCCode" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Note" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Association Name="Material_Tool" Member="Tools" ThisKey="MaterialCode" OtherKey="ToolCode" Type="Tool" />
+      <Association Name="Material_UsedMaterial" Member="UsedMaterials" ThisKey="MaterialCode" OtherKey="MaterialCode" Type="UsedMaterial" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Material_DisableType" Member="Material_DisableTypes">
+    <Type Name="Material_DisableType">
+      <Column Name="MaterialCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DisabilityType" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Material_skillType" Member="Material_skillTypes">
+    <Type Name="Material_skillType">
+      <Column Name="ACTCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaterialCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Ministry" Member="Ministries">
+    <Type Name="Ministry">
+      <Column Name="MinistryCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MinistryName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Ministry_Organization" Member="Organizations" ThisKey="MinistryCode" OtherKey="MinistryCode" Type="Organization" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Occupation" Member="Occupations">
+    <Type Name="Occupation">
+      <Column Name="OccupationID" Type="System.String" DbType="VarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OccupationDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Organization" Member="Organizations">
+    <Type Name="Organization">
+      <Column Name="OrgCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OrgName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MinistryCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Organization_Provider" Member="Providers" ThisKey="OrgCode" OtherKey="OrgCode" Type="Provider" />
+      <Association Name="Ministry_Organization" Member="Ministry" ThisKey="MinistryCode" OtherKey="MinistryCode" Type="Ministry" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Person" Member="Persons">
+    <Type Name="Person">
+      <Column Name="CID" Type="System.String" DbType="VarChar(13) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DOB" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="BloodType" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Nation" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Race" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Religion" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Foreigner" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LiveHomeStatus" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LiveHouseNumber" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LiveMooNumber" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LiveVillageName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LiveAlley" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LiveStreetName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LiveTumbon" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LiveCity" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LiveProvince" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LivePostCode" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LiveMoveInDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LiveMoveOutDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LiveMoveOutReason" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CensusHouseNumber" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CensusMooNumber" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CensusVillageName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CensusAlley" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CensusStreetName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CensusTumbon" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CensusCity" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CensusProvince" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CensusPostCode" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CensusMoveInDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CensusMoveOutDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CensusMoveOutReason" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="HomePhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Mobile" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="RecordedStaffID" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DateTimeUpdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DisabilityType" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Host" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Child_Pic" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Child_PicCID" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PhysicalEvaluation" Member="PhysicalEvaluations">
+    <Type Name="PhysicalEvaluation">
+      <Column Name="CID" Type="System.String" DbType="VarChar(13) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CaseNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PhysicalEvalCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PhysicalEvalValue" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RecorderID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EvalDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Evaluation_PhysicalEvaluation" Member="Evaluation" ThisKey="CID,CaseNo" OtherKey="CID,CaseNo" Type="Evaluation" IsForeignKey="true" />
+      <Association Name="PhysicalProblem_PhysicalEvaluation" Member="PhysicalProblem" ThisKey="PhysicalEvalCode" OtherKey="PhysicalEvalCode" Type="PhysicalProblem" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PhysicalEvaluation_log" Member="PhysicalEvaluation_logs">
+    <Type Name="PhysicalEvaluation_log">
+      <Column Name="CID" Type="System.String" DbType="VarChar(13) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CaseNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PhysicalEvalCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PhysicalEvalValue" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RecorderID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EvalDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PhysicalProblem" Member="PhysicalProblems">
+    <Type Name="PhysicalProblem">
+      <Column Name="PhysicalEvalCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="PhysicalProblem_PhysicalEvaluation" Member="PhysicalEvaluations" ThisKey="PhysicalEvalCode" OtherKey="PhysicalEvalCode" Type="PhysicalEvaluation" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Plannig" Member="Plannigs">
+    <Type Name="Plannig">
+      <Column Name="CID" Type="System.String" DbType="VarChar(13) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CaseNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SACTCode" Type="System.String" DbType="VarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ExpectedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Activity_Plannig" Member="Activity" ThisKey="SACTCode" OtherKey="ACTCode" Type="Activity" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Provider" Member="Providers">
+    <Type Name="Provider">
+      <Column Name="ProviderCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProviderName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OrgCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Provider_Host" Member="Hosts" ThisKey="ProviderCode" OtherKey="ProviderCode" Type="Host" />
+      <Association Name="Organization_Provider" Member="Organization" ThisKey="OrgCode" OtherKey="OrgCode" Type="Organization" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Province" Member="Provinces">
+    <Type Name="Province">
+      <Column Name="ProvinceID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProvinceDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.r_LiveStatus" Member="r_LiveStatus">
+    <Type Name="r_LiveStatus">
+      <Column Name="LiveStatus" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.r_MariageStatus" Member="r_MariageStatus">
+    <Type Name="r_MariageStatus">
+      <Column Name="MariageStatus" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="code" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="codehl7" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="dec" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.r_yesno" Member="r_yesnos">
+    <Type Name="r_yesno">
+      <Column Name="id" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="dec" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.reg_heal" Member="reg_heals">
+    <Type Name="reg_heal">
+      <Column Name="code" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="dec" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Relation" Member="Relations">
+    <Type Name="Relation">
+      <Column Name="RelationID" Type="System.String" DbType="VarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RelationThaiDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="RelationHL7Code" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="RelationEngName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="RelationEngLongDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Role" Member="Roles">
+    <Type Name="Role">
+      <Column Name="Role_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Role_description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="Role_Role_Staff" Member="Role_Staffs" ThisKey="Role_id" OtherKey="Role_id" Type="Role_Staff" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Role_Staff" Member="Role_Staffs">
+    <Type Name="Role_Staff">
+      <Column Name="Role_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Staff_id" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Employee_Role_Staff" Member="Employee" ThisKey="Staff_id" OtherKey="Staff_id" Type="Employee" IsForeignKey="true" />
+      <Association Name="Role_Role_Staff" Member="Role" ThisKey="Role_id" OtherKey="Role_id" Type="Role" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SelfCareAbility" Member="SelfCareAbilities">
+    <Type Name="SelfCareAbility">
+      <Column Name="SelfEvalCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Association Name="SelfCareAbility_SelfCareEvaluation" Member="SelfCareEvaluations" ThisKey="SelfEvalCode" OtherKey="SelfEvalCode" Type="SelfCareEvaluation" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SelfCareEvaluation" Member="SelfCareEvaluations">
+    <Type Name="SelfCareEvaluation">
+      <Column Name="CID" Type="System.String" DbType="VarChar(13) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CaseNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SelfEvalCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SelfEvalValue" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RecorderID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EvalDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="SelfCareAbility_SelfCareEvaluation" Member="SelfCareAbility" ThisKey="SelfEvalCode" OtherKey="SelfEvalCode" Type="SelfCareAbility" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SelfCareEvaluation_log" Member="SelfCareEvaluation_logs">
+    <Type Name="SelfCareEvaluation_log">
+      <Column Name="CID" Type="System.String" DbType="VarChar(13) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CaseNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SelfEvalCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SelfEvalValue" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RecorderID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EvalDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Service" Member="Services">
+    <Type Name="Service">
+      <Column Name="SVCCode" Type="System.String" DbType="VarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SVCDesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="StaffRole" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="SVCName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="HostCode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="SVCType" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="SVCObjective" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="SVCSupport" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="SVCCoverage" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="SVCStart" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="SVCEnd" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="Service_Activity" Member="Activities" ThisKey="SVCCode" OtherKey="SVCCode" Type="Activity" />
+      <Association Name="Service_ConditionService" Member="ConditionServices" ThisKey="SVCCode" OtherKey="SVCCODE" Type="ConditionService" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ServiceProvision" Member="ServiceProvisions">
+    <Type Name="ServiceProvision">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HostID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="StaffID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PSDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="ServiceProvision_ServiceProvisionDetail" Member="ServiceProvisionDetails" ThisKey="id" OtherKey="id" Type="ServiceProvisionDetail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ServiceProvisionDetails" Member="ServiceProvisionDetails">
+    <Type Name="ServiceProvisionDetail">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ACTCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="logDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Note" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SACTCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="ServiceProvision_ServiceProvisionDetail" Member="ServiceProvision" ThisKey="id" OtherKey="id" Type="ServiceProvision" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ServiceProvisionDetails_log" Member="ServiceProvisionDetails_logs">
+    <Type Name="ServiceProvisionDetails_log">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ACTCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Note" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="logDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SACTCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ServiceProvisionVsPerson" Member="ServiceProvisionVsPersons">
+    <Type Name="ServiceProvisionVsPerson">
+      <Column Name="CaseNo" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PSNumber" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SightEvaluation" Member="SightEvaluations">
+    <Type Name="SightEvaluation">
+      <Column Name="CID" Type="System.String" DbType="VarChar(13) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CaseNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SightEvalCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RecorderID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EvalDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Evaluation_SightEvaluation" Member="Evaluation" ThisKey="CID,CaseNo" OtherKey="CID,CaseNo" Type="Evaluation" IsForeignKey="true" />
+      <Association Name="SightProblem_SightEvaluation" Member="SightProblem" ThisKey="SightEvalCode" OtherKey="SightEvalCode" Type="SightProblem" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SightEvaluation_log" Member="SightEvaluation_logs">
+    <Type Name="SightEvaluation_log">
+      <Column Name="CID" Type="System.String" DbType="VarChar(13) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CaseNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SightEvalCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RecorderID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EvalDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SightProblem" Member="SightProblems">
+    <Type Name="SightProblem">
+      <Column Name="SightEvalCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="SightProblem_SightEvaluation" Member="SightEvaluations" ThisKey="SightEvalCode" OtherKey="SightEvalCode" Type="SightEvaluation" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SubActivity" Member="SubActivities">
+    <Type Name="SubActivity">
+      <Column Name="SACTCode" Type="System.String" DbType="VarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SACTDesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ACTCode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="SubActivity_GrowthEvaluation" Member="GrowthEvaluations" ThisKey="SACTCode" OtherKey="SACTCode" Type="GrowthEvaluation" />
+      <Association Name="Activity_SubActivity" Member="Activity" ThisKey="ACTCode" OtherKey="ACTCode" Type="Activity" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SubActivity2" Member="SubActivity2s">
+    <Type Name="SubActivity2">
+      <Column Name="SACTCode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="AgeCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SACT2Desc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="SACT2Code" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SubWelfare" Member="SubWelfares">
+    <Type Name="SubWelfare">
+      <Column Name="SubWelfareID" Type="System.String" DbType="NVarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SubWelfareDescription" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="WelfareID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Title" Member="Titles">
+    <Type Name="Title">
+      <Column Name="TitleID" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tools" Member="Tools">
+    <Type Name="Tool">
+      <Column Name="CID" Type="System.String" DbType="VarChar(13) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CaseNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ToolCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StartTime" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EndTime" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Provider" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RecorderID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EvalDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Evaluation_Tool" Member="Evaluation" ThisKey="CID,CaseNo" OtherKey="CID,CaseNo" Type="Evaluation" IsForeignKey="true" />
+      <Association Name="Material_Tool" Member="Material" ThisKey="ToolCode" OtherKey="MaterialCode" Type="Material" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tools_log" Member="Tools_logs">
+    <Type Name="Tools_log">
+      <Column Name="CID" Type="System.String" DbType="VarChar(13) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CaseNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ToolCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StartTime" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EndTime" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Provider" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RecorderID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EvalDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tumbon" Member="Tumbons">
+    <Type Name="Tumbon">
+      <Column Name="TumbonID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TumbonDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CityID" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UsedMaterials" Member="UsedMaterials">
+    <Type Name="UsedMaterial">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ACTCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaterialCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="logDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Material_UsedMaterial" Member="Material" ThisKey="MaterialCode" OtherKey="MaterialCode" Type="Material" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UsedMaterials_log" Member="UsedMaterials_logs">
+    <Type Name="UsedMaterials_log">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ACTCode" Type="System.String" DbType="VarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaterialCode" Type="System.String" DbType="VarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="logDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
