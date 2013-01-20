@@ -75,12 +75,13 @@
     </assignedEntity>
   </authenticator>
   
-		<component>
+	<component>
+	<!--Plan ที่ส่งออกจาก CaseManager อยู่ในลักษณะของ Service โดยจะส่งไปที่ อบต.  พม ศูนย์ และ โรงพยาบาล-->
 		<planNumber planNumber="3"/>
 		<section code="CA003" displayName="การวางแผนบริการจาก Case Manager">
 			<entry typeCode="DRIV">
 				<observation classCode="OBS" moodCode="RQO">
-					<code code="B435" codeSystem="2.16.840.1.113883.6.500" displayName="ท่านมีปัญหาเกี่ยวกับภาวะภูมิแพ้ หรือไม่"/> 
+					<code localCode="" code="B345" codeSystem="2.16.840.1.113883.6.500" displayName="ท่านมีปัญหาเกี่ยวกับภาวะภูมิแพ้ หรือไม่"/> 
 					<effectiveTime>
 						<center value="20120429"/>
 					</effectiveTime>
@@ -90,21 +91,12 @@
 			<entry typeCode="DRIV">
 				<observation classCode="OBS" moodCode="RQO">
 					<!-- Plan of Activity activity template -->
-					<code code="......." codeSystem="2.16.840.1.113883.6.500" displayName="การให้บริการกายภาพบำบัด"/>  <!--เปลี่ยนโค้ดกิจกรรม ตามกิจกรรมที่วางแผนไว้ อาจะเปลี่ยน  Codesystem ด้วย-->
+					<code localCode="" code="" codeSystem="2.16.840.1.113883.6.500" displayName="การให้บริการกายภาพบำบัด"/>  <!--เปลี่ยนโค้ดกิจกรรม ตามกิจกรรมที่วางแผนไว้ อาจะเปลี่ยน  Codesystem ด้วย-->
 					<effectiveTime>
 						<center value="20120430"/>
 					</effectiveTime>
 				</observation>
 			</entry>
-			
-			<entry typeCode="DRIV">
-				<observation classCode="OBS" moodCode="RQO">
-					<code code="......." codeSystem="2.16.840.1.113883.6.96" displayName="การให้บริการกายภาพบำบัด"/>  <!--เปลี่ยนโค้ดกิจกรรม ตามกิจกรรมที่วางแผนไว้ อาจะเปลี่ยน  Codesystem ด้วย-->
-					<effectiveTime>
-						<center value="20120430"/>
-					</effectiveTime>
-				</observation>
-			</entry>	
 		</section>
 	  </component>
  </ClinicalDocument>

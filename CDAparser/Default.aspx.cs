@@ -47,7 +47,7 @@ namespace CDAparser
             {
                 ListBox1.Items.Add(a.typeCode + " " + a.observationCode);
             }
-            callService();
+            //callService();
 
         }
 
@@ -57,7 +57,7 @@ namespace CDAparser
             {
                 string content;
                 string Method = "POST";
-                string uri = "http://localhost:64933/ServiceEducation.svc";
+                string uri = "http://localhost:64933/Service1.svc/test";
 
                 HttpWebRequest req = WebRequest.Create(uri) as HttpWebRequest;
                 req.KeepAlive = false;

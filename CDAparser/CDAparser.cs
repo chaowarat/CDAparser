@@ -50,6 +50,7 @@ namespace CDAparser
         private static String CDAauthorAssignedAuthorIdExtension = "author/assignedAuthor/id/@extension";
         private static String CDAauthorAssignedAuthorIdRoot = "author/assignedAuthor/id/@root";
         private static String CDAauthorAssignedAuthorHostIDExtension = "author/assignedAuthor/hostID/@extension";
+        private static String CDAauthorAssignedAuthorHostTypeExtension = "author/assignedAuthor/hostType/@extension";
         private static String CDAauthorAssignedAuthorAssignedPersonNameGiven = "author/assignedAuthor/assignedPerson/name/given";
         private static String CDAauthorAssignedAuthorAssignedPersonNameFamily = "author/assignedAuthor/assignedPerson/name/family";
         private static String CDAauthorAssignedAuthorAssignedPersonNameSuffix = "author/assignedAuthor/assignedPerson/name/suffix";
@@ -69,6 +70,7 @@ namespace CDAparser
         private static String CDAlegalAuthenticatorAssignedEntityIdExtension = "legalAuthenticator/assignedEntity/id/@extension";
         private static String CDAlegalAuthenticatorAssignedEntityIdRoot = "legalAuthenticator/assignedEntity/id/@root";
         private static String CDAlegalAuthenticatorAssignedEntityHostIDExtension = "legalAuthenticator/assignedEntity/hostID/@extension";
+        private static String CDAlegalAuthenticatorAssignedEntityHostTypeExtension = "legalAuthenticator/assignedEntity/hostType/@extension";
         private static String CDAlegalAuthenticatorAssignedEntityAssignedPersonNameGiven = "legalAuthenticator/assignedEntity/assignedPerson/name/given";
         private static String CDAlegalAuthenticatorAssignedEntityAssignedPersonNameFamily = "legalAuthenticator/assignedEntity/assignedPerson/name/family";
         private static String CDAlegalAuthenticatorAssignedEntityAssignedPersonNameSuffix = "legalAuthenticator/assignedEntity/assignedPerson/name/suffix";
@@ -79,14 +81,11 @@ namespace CDAparser
         private static String CDAauthenticatorAssignedEntityIdExtension = "authenticator/assignedEntity/id/@extension";
         private static String CDAauthenticatorAssignedEntityIdRoot = "authenticator/assignedEntity/id/@root";
         private static String CDAauthenticatorAssignedEntityHostIDExtension = "authenticator/assignedEntity/hostID/@extension";
+        private static String CDAauthenticatorAssignedEntityHostTypeExtension = "authenticator/assignedEntity/hostType/@extension";
         private static String CDAauthenticatorAssignedEntityAssignedPersonNameGiven = "authenticator/assignedEntity/assignedPerson/name/given";
         private static String CDAauthenticatorAssignedEntityAssignedPersonNameFamily = "authenticator/assignedEntity/assignedPerson/name/family";
         private static String CDAauthenticatorAssignedEntityAssignedPersonNameSuffix = "authenticator/assignedEntity/assignedPerson/name/suffix";
-        /// <summary>
-        /// <!-- The claim associated with this CDA document is identified by the value XA728302 in data 
-        ///      element TRN02-Attachment Control Number of Loop 2000A-Payer/Provider Control Number. 
-        /// -->
-        /// </summary>
+        //*****************************************************************************************************************
         private static String CDAinFulfillmentOfOrderIdExtension = "inFulfillmentOf/order/id/@extension";
         private static String CDAinFulfillmentOfOrderIdRoot = "inFulfillmentOf/order/id/@root";
         //*************************<!--Date Range of Treatment --> and  <!--Date Range of Described by Plan-->*****************************
@@ -100,6 +99,10 @@ namespace CDAparser
         //************************* component Head ****************************************************************
         private static String CDAcomponentContextConductionInd = "component/@contextConductionInd";
         private static String CDAcomponentTypeCode = "component/@typeCode";
+
+        private static String CDAcomponentPlanNumber = "component/planNumber/@planNumber";
+        private static String CDAcomponentCaseNumber = "component/caseNumber/@caseNumber";
+
         private static String CDAcomponentStructuredBodyComponentSectionCode = "component/structuredBody/component/section/code/@code";
         private static String CDAcomponentStructuredBodyComponentSectionCodeSystem = "component/structuredBody/component/section/code/@codeSystem";
         private static String CDAcomponentStructuredBodyComponentSectionCodeSystemName = "component/structuredBody/component/section/code/@codeSystemName";
@@ -541,6 +544,16 @@ namespace CDAparser
             setInnerTextSingle(CDAauthorAssignedAuthorHostIDExtension, value);
         }
 
+        public string getCDAauthorAssignedAuthorHostTypeExtension()
+        {
+            return getInnerTextSingle(CDAauthorAssignedAuthorHostTypeExtension);
+        }
+
+        public void setCDAauthorAssignedAuthorHostTypeExtension(string value)
+        {
+            setInnerTextSingle(CDAauthorAssignedAuthorHostTypeExtension, value);
+        }
+
         public string getCDAauthorAssignedAuthorAssignedPersonNameGiven()
         {
             return getInnerTextSingle(CDAauthorAssignedAuthorAssignedPersonNameGiven);
@@ -715,6 +728,17 @@ namespace CDAparser
             setInnerTextSingle(CDAlegalAuthenticatorAssignedEntityHostIDExtension, value);
         }
 
+
+        public string getCDAlegalAuthenticatorAssignedEntityHostTypeExtension()
+        {
+            return getInnerTextSingle(CDAlegalAuthenticatorAssignedEntityHostTypeExtension);
+        }
+
+        public void setCDAlegalAuthenticatorAssignedEntityHostTypeExtension(string value)
+        {
+            setInnerTextSingle(CDAlegalAuthenticatorAssignedEntityHostTypeExtension, value);
+        }
+        
         public string getCDAlegalAuthenticatorAssignedEntityAssignedPersonNameGiven()
         {
             return getInnerTextSingle(CDAlegalAuthenticatorAssignedEntityAssignedPersonNameGiven);
@@ -805,6 +829,17 @@ namespace CDAparser
         public void setCDAauthenticatorAssignedEntityHostIDExtension(string value)
         {
             setInnerTextSingle(CDAauthenticatorAssignedEntityHostIDExtension, value);
+        }
+
+
+        public string getCDAauthenticatorAssignedEntityHostTypeExtension()
+        {
+            return getInnerTextSingle(CDAauthenticatorAssignedEntityHostTypeExtension);
+        }
+
+        public void setCDAauthenticatorAssignedEntityHostTypeExtension(string value)
+        {
+            setInnerTextSingle(CDAauthenticatorAssignedEntityHostTypeExtension, value);
         }
 
         public string getCDAauthenticatorAssignedEntityAssignedPersonNameGiven()
@@ -945,6 +980,27 @@ namespace CDAparser
         public void setCDAcomponentTypeCode(string value)
         {
             setInnerTextSingle(CDAcomponentTypeCode, value);
+        }
+
+        public string getCDAcomponentPlanNumber()
+        {
+            return getInnerTextSingle(CDAcomponentPlanNumber);
+        }
+
+        public void setCDAcomponentPlanNumber(string value)
+        {
+            setInnerTextSingle(CDAcomponentPlanNumber, value);
+        }
+
+
+        public string getCDAcomponentCaseNumber()
+        {
+            return getInnerTextSingle(CDAcomponentCaseNumber);
+        }
+
+        public void setCDAcomponentCaseNumber(string value)
+        {
+            setInnerTextSingle(CDAcomponentCaseNumber, value);
         }
 
         public string getCDAcomponentStructuredBodyComponentSectionCode()

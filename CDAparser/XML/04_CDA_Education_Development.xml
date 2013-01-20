@@ -1,3 +1,4 @@
+<!--ทั้งหมดนี้อ้างมาจาก Database ของศูนย์การศึกษาพิเศษ ทั้งหมด-->
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href='CDA.xsl' type='text/xsl'?>
 <ClinicalDocument> <!--xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" classCode="DOCCLIN" moodCode="EVN" xsi:schemaLocation="urn:hl7-org:v3 ../schemas/CDA.xsd"-->
@@ -25,6 +26,7 @@
     <assignedAuthor>
       <id extension="Staff-Code" root="2.16.840.1.113883.19.2744.1.6"/> 
 	  <hostID extension=""/>
+	  <hostType extension="02"/>
       <assignedPerson>
         <name>
           <given>Danny</given>
@@ -49,6 +51,7 @@
     <assignedEntity>
       <id extension="S001" root="2.16.840.1.113883.19.2744.1.6"/>
 	  <hostID extension=""/>
+	  <hostType extension="02"/>
       <assignedPerson>
         <name>
           <given>Stefano</given>
@@ -66,6 +69,7 @@
       <!-- fix root to indicate NJ license -->
       <id extension="......" root="2.16.840.1.113883.19.2744.1.6"/>
 	  <hostID extension=""/>
+	  <hostType extension="02"/>
       <assignedPerson>
         <name>
           <given>Jonah</given>
@@ -76,11 +80,13 @@
   </authenticator>
   
 		<component>
+		<caseNumber caseNumber=""/>
 		<section code="E009" displayName="กิจกรรมส่งเสริมพัฒนาการ">
 			
+			<!--
 			<entry typeCode="DRIV">
 				<observation classCode="OBS" moodCode="RQO">
-					<code code="d4xxx.404" codeSystem="2.16.840.1.113883.6.500" displayName="การให้บริการกายภาพบำบัด"/>  <!--เปลี่ยนโค้ดกิจกรรม ตามกิจกรรมที่วางแผนไว้ อาจะเปลี่ยน  Codesystem ด้วย-->
+					<code localCode="" displayName=""/>
 					<effectiveTime>
 						<center value="20120429"/>
 					</effectiveTime>
@@ -89,14 +95,13 @@
 			
 			<entry typeCode="DRIV">
 				<observation classCode="OBS" moodCode="RQO">
-					<!-- Plan of Activity activity template -->
-					<code code="d9200.401" codeSystem="2.16.840.1.113883.6.500" displayName="การให้บริการกิจกรรมบำบัด"/>  <!--เปลี่ยนโค้ดกิจกรรม ตามกิจกรรมที่วางแผนไว้ อาจะเปลี่ยน  Codesystem ด้วย-->
+					<code localCode="" displayName="การให้บริการกิจกรรมบำบัด"/>  
 					<effectiveTime>
 						<center value="20120430"/>
 					</effectiveTime>
 				</observation>
 			</entry>
-			
+			-->
 		</section>
 	  </component>
  </ClinicalDocument>

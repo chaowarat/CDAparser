@@ -10,6 +10,7 @@
     <assignedAuthor>
       <id extension="Staff-Code" root="2.16.840.1.113883.19.2744.1.6"/> 
 	  <hostID extension=""/>
+	  <hostType extension="02"/>
       <assignedPerson>
         <name>
           <given>Danny</given>
@@ -34,6 +35,7 @@
     <assignedEntity>
       <id extension="S001" root="2.16.840.1.113883.19.2744.1.6"/>
 	  <hostID extension=""/>
+	  <hostType extension="02"/>
       <assignedPerson>
         <name>
           <given>Stefano</given>
@@ -51,6 +53,7 @@
       <!-- fix root to indicate NJ license -->
       <id extension="......" root="2.16.840.1.113883.19.2744.1.6"/>
 	  <hostID extension=""/>
+	  <hostType extension="02"/>
       <assignedPerson>
         <name>
           <given>Jonah</given>
@@ -80,10 +83,10 @@
 						<LiveProvince>44</LiveProvince>	<!--Province Code-->
 						<LivePostCode>.....</LivePostCode>
 						<CensusHouseNumber>....</CensusHouseNumber>
-						<CensusMooNumber>....</CensusMooNumber>
-						<CensusVillageName>....</CensusVillageName>
-						<CensusAlley>....</CensusAlley>
-						<CensusStreetName>.....</CensusStreetName>
+						<CensusMooNumber>....</>
+						<CensusVillageName>....</>
+						<CensusAlley>....</>
+						<CensusStreetName>.....</>
 						<CensusTumbon>440101</CensusTumbon>	<!--Tumbon Code-->
 						<CensusCity>4401</CensusCity>	<!--City Code-->
 						<CensusProvince>44</CensusProvince>	<!--Province Code-->
@@ -110,7 +113,6 @@
 					<childPic value=""/>
 					<childPicCID value=""/>
 				</patient>
-        </patientRole>
 				</recordTarget>
 			</entry>
 			
@@ -130,10 +132,10 @@
 						<LiveProvince>44</LiveProvince>	<!--Province Code-->
 						<LivePostCode>.....</LivePostCode>
 						<CensusHouseNumber>....</CensusHouseNumber>
-						<CensusMooNumber>....</CensusMooNumber>
-						<CensusVillageName>....</CensusVillageName>
-						<CensusAlley>....</CensusAlley>
-						<CensusStreetName>.....</CensusStreetName>
+						<CensusMooNumber>....</>
+						<CensusVillageName>....</>
+						<CensusAlley>....</>
+						<CensusStreetName>.....</>
 						<CensusTumbon>440101</CensusTumbon>	<!--Tumbon Code-->
 						<CensusCity>4401</CensusCity>	<!--City Code-->
 						<CensusProvince>44</CensusProvince>	<!--Province Code-->
@@ -160,7 +162,6 @@
 					<childPic value=""/>
 					<childPicCID value=""/>
 				</patient>
-        </patientRole>
 				</recordTarget>
 			</entry>
 			</section>

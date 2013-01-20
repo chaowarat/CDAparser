@@ -14,11 +14,11 @@ namespace CDAparser
     public interface IServiceEducation
     {
         [OperationContract]
-        [WebGet(UriTemplate = "/getEducationEvaluation")]
-        XmlElement getEducationEvaluation();
+        [WebGet(UriTemplate = "/getEducationEvaluation?cid={cid}&planNo={planNo}")]
+        XmlElement getEducationEvaluation(string cid, string planNo);
 
-        [OperationContract]
-        [WebInvoke(UriTemplate = "", Method = "POST")]
-        void setEducationEvaluation(string data);
+        //[OperationContract]
+        //[WebInvoke(UriTemplate = "", Method = "POST")]
+        //void setEducationEvaluation(string data);
     }
 }
