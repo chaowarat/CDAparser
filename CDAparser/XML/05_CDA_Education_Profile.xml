@@ -83,10 +83,10 @@
 						<LiveProvince>44</LiveProvince>	<!--Province Code-->
 						<LivePostCode>.....</LivePostCode>
 						<CensusHouseNumber>....</CensusHouseNumber>
-						<CensusMooNumber>....</>
-						<CensusVillageName>....</>
-						<CensusAlley>....</>
-						<CensusStreetName>.....</>
+						<CensusMooNumber>....</CensusMooNumber>
+						<CensusVillageName>....</CensusVillageName>
+						<CensusAlley>....</CensusAlley>
+						<CensusStreetName>.....</CensusStreetName>
 						<CensusTumbon>440101</CensusTumbon>	<!--Tumbon Code-->
 						<CensusCity>4401</CensusCity>	<!--City Code-->
 						<CensusProvince>44</CensusProvince>	<!--Province Code-->
@@ -113,6 +113,7 @@
 					<childPic value=""/>
 					<childPicCID value=""/>
 				</patient>
+        </patientRole>
 				</recordTarget>
 			</entry>
 			
