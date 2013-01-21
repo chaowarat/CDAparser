@@ -17,6 +17,7 @@ namespace CDAparser
         public string observationClassCode { get; set; }
         public string observationMoodCode { get; set; }
         public string observationCode { get; set; }
+        public string observationLocalCode { get; set; }
         public string observationCodeSystem { get; set; }
         public string observationDisplayName { get; set; }
         public string observationEffectiveTimeCenterValue { get; set; }
@@ -27,6 +28,7 @@ namespace CDAparser
             this.observationClassCode = "OBS";
             this.observationMoodCode = "RQO";
             this.observationCode = ".......";
+            this.observationLocalCode = ".......";
             this.observationCodeSystem = "2.16.840.1.113883.6.96";
             this.observationDisplayName = "";
             this.observationEffectiveTimeCenterValue = "";
@@ -40,6 +42,7 @@ namespace CDAparser
                                 new XAttribute("classCode", this.observationClassCode),
                                 new XAttribute("moodCode", this.observationMoodCode),
                             new XElement("code",
+                                new XAttribute("localCode", this.observationLocalCode),
                                 new XAttribute("code", this.observationCode),
                                 new XAttribute("codeSystem", this.observationCodeSystem),
                                 new XAttribute("displayName", this.observationDisplayName)),
@@ -125,6 +128,7 @@ namespace CDAparser
         }
     }
 
+    
     public class CDAEntryOfProfile{
         public string typeCode { get; set; }
         public string recordTargetpPatientRoleIdExtension { get; set; }

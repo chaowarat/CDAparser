@@ -18,9 +18,34 @@ namespace CDAparser
         */
         //static CasemanagerDataContext casemanager = new CasemanagerDataContext();
 
-        public XmlElement getEducationEvaluation(string cid, string planNo)
+        public XmlElement getEducationEvaluation(string cid, string planNo, string caseNo)
         {
-            return CDAsender.getEducationEvaluationXML(cid, planNo).DocumentElement;
+            return CDAsender.getEducationEvaluationXML(cid, planNo, caseNo).DocumentElement;
+        }
+
+        public XmlElement getEducationPlanning(string cid, string planNo, string caseNo)
+        {
+            return CDAsender.getEducationPlanningXML(cid, planNo, caseNo).DocumentElement;
+        }
+
+        public XmlElement getEducationServiceProvision(string cid, string planNo, string caseNo)
+        {
+            return CDAsender.getEducationServiceProvisionXML(cid, planNo, caseNo).DocumentElement;
+        }
+
+        public XmlElement getEducationDevelopment(string cid, string planNo, string caseNo)
+        {
+            return CDAsender.getEducationDevelopmentXML(cid, planNo, caseNo).DocumentElement;
+        }
+
+        public XmlElement getEducationProfile(string cid, string planNo, string caseNo)
+        {
+            return CDAsender.getEducationProfileXML(cid, planNo, caseNo).DocumentElement;
+        }
+
+        public XmlElement getEducationMilk()
+        {
+            return CDAsender.getEducationMilkXML().DocumentElement;
         }
 
     }

@@ -14,8 +14,28 @@ namespace CDAparser
     public interface IServiceEducation
     {
         [OperationContract]
-        [WebGet(UriTemplate = "/getEducationEvaluation?cid={cid}&planNo={planNo}")]
-        XmlElement getEducationEvaluation(string cid, string planNo);
+        [WebGet(UriTemplate = "/getEducationEvaluation?cid={cid}&planNo={planNo}&caseNo={caseNo}")]
+        XmlElement getEducationEvaluation(string cid, string planNo, string caseNo);
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/getEducationPlanning?cid={cid}&planNo={planNo}&caseNo={caseNo}")]
+        XmlElement getEducationPlanning(string cid, string planNo, string caseNo);
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/getEducationServiceProvision?cid={cid}&planNo={planNo}&caseNo={caseNo}")]
+        XmlElement getEducationServiceProvision(string cid, string planNo, string caseNo);
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/getEducationDevelopment?cid={cid}&planNo={planNo}&caseNo={caseNo}")]
+        XmlElement getEducationDevelopment(string cid, string planNo, string caseNo);
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/getEducationProfile?cid={cid}&planNo={planNo}&caseNo={caseNo}")]
+        XmlElement getEducationProfile(string cid, string planNo, string caseNo);
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/getEducationMilk")]
+        XmlElement getEducationMilk();
 
         //[OperationContract]
         //[WebInvoke(UriTemplate = "", Method = "POST")]
