@@ -74,7 +74,7 @@ namespace CDAparser
                 //parser.setCDAauthorAssignedAuthorHostIDExtension(); รหัส ศุนย์การศึกษา
             }
             catch{}
-            //parser.setCDAcustodianAssignedCustodianAssignedCustodianRepresentedCustodianOrganizationIdExtension();
+            parser.setCDAcustodianAssignedCustodianAssignedCustodianRepresentedCustodianOrganizationIdExtension(person.Host);
             //parser.setCDAcustodianAssignedCustodianRepresentedCustodianOrganizationName();
 
             parser.setCDAlegalAuthenticatorTimeValue(time);
@@ -96,8 +96,51 @@ namespace CDAparser
 
         public static XmlDocument getEducationEvaluationXML(string cid, string planNo, string caseNo)
         {
-            XmlDocument doc = initXML(educationEvaluationXml, cid, planNo, true);
-            CDAparser parser = new CDAparser(doc);
+            CDAparser parser = new CDAparser(educationEvaluationXml);
+            ///////////////////////////////////////////////////////////////////////////////
+            string time = DateTime.Now.ToString(dateTimeFormat, CultureInfo.InvariantCulture);
+            Person person = null;
+            HL7_Gender_Standard gender = null;
+            Evaluation staff = null;
+
+            parser.setCDAeffectiveTime(time);
+            parser.setCDAauthorTimeValue(time);
+
+            person = (from a in education.Persons where a.CID.Equals(cid) select a).First();
+            gender = (from a in education.HL7_Gender_Standards where a.GenderCode.Equals(person.Gender) select a).First();
+            staff = (from a in education.Evaluations where a.CID.Equals(cid) select a).First();
+
+            parser.setCDArecordTargetPatientRoleIdExtension(cid);
+            parser.setCDArecordTargetPatientRolePatientNameGiven(person.FirstName);
+            parser.setCDArecordTargetPatientRolePatientNameFamily(person.LastName);
+            parser.setCDArecordTargetPatientRolePatientAdministrativeGenderCode(person.Gender);
+            parser.setCDArecordTargetPatientRolePatientAdministrativeGenderCodeDisplayName(gender.GenderEnglishDescription);
+            parser.setCDArecordTargetPatientRolePatientBirthTime(((DateTime)person.DOB).ToString(dateTimeFormat, CultureInfo.InvariantCulture));
+
+            parser.setCDAauthorAssignedAuthorIdExtension(staff.StaffID);
+            var staffName = (from a in education.Employees where a.Staff_id.Equals(staff.StaffID) select a).First();
+
+            parser.setCDAauthorAssignedAuthorAssignedPersonNameGiven(staffName.Firstname);
+            parser.setCDAauthorAssignedAuthorAssignedPersonNameFamily(staffName.Lastname);
+            //parser.setCDAauthorAssignedAuthorHostIDExtension(); รหัส ศุนย์การศึกษา
+
+            parser.setCDAcustodianAssignedCustodianAssignedCustodianRepresentedCustodianOrganizationIdExtension(person.Host);
+            //parser.setCDAcustodianAssignedCustodianRepresentedCustodianOrganizationName();
+
+            parser.setCDAlegalAuthenticatorTimeValue(((DateTime)person.DateTimeUpdate).ToString(dateTimeFormat, CultureInfo.InvariantCulture));
+            //parser.setCDAlegalAuthenticatorAssignedEntityIdExtension();
+            //parser.setCDAlegalAuthenticatorAssignedEntityIdRoot();
+            //parser.setCDAlegalAuthenticatorAssignedEntityAssignedPersonNameGiven();
+            //parser.setCDAlegalAuthenticatorAssignedEntityAssignedPersonNameFamily();
+            //parser.setCDAlegalAuthenticatorAssignedEntityHostIDExtension();
+
+            parser.setCDAauthenticatorTimeValue(time);
+            //parser.setCDAauthenticatorAssignedEntityIdExtension();
+            //parser.setCDAauthenticatorAssignedEntityIdRoot();
+            //parser.setCDAauthenticatorAssignedEntityAssignedPersonNameGiven();
+            //parser.setCDAauthenticatorAssignedEntityAssignedPersonNameFamily();
+            //parser.setCDAauthenticatorAssignedEntityHostIDExtension();
+            ///////////////////////////////////////////////////////////////////////////////
             parser.setCDAcomponentPlanNumber(planNo);
             parser.setCDAcomponentCaseNumber(caseNo);
             var disType = from a in education.DisabilityTypes select a;
