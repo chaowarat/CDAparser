@@ -118,11 +118,14 @@ namespace CDAparser
             parser.setCDArecordTargetPatientRolePatientBirthTime(((DateTime)person.DOB).ToString(dateTimeFormat, CultureInfo.InvariantCulture));
 
             parser.setCDAauthorAssignedAuthorIdExtension(staff.StaffID);
-            var staffName = (from a in education.Employees where a.Staff_id.Equals(staff.StaffID) select a).First();
+            if (staff.StaffID != null)
+            {
+                var staffName = (from a in education.Employees where a.Staff_id.Equals(staff.StaffID) select a).First();
 
-            parser.setCDAauthorAssignedAuthorAssignedPersonNameGiven(staffName.Firstname);
-            parser.setCDAauthorAssignedAuthorAssignedPersonNameFamily(staffName.Lastname);
-            //parser.setCDAauthorAssignedAuthorHostIDExtension(); รหัส ศุนย์การศึกษา
+                parser.setCDAauthorAssignedAuthorAssignedPersonNameGiven(staffName.Firstname);
+                parser.setCDAauthorAssignedAuthorAssignedPersonNameFamily(staffName.Lastname);
+                //parser.setCDAauthorAssignedAuthorHostIDExtension(); รหัส ศุนย์การศึกษา
+            }
 
             parser.setCDAcustodianAssignedCustodianAssignedCustodianRepresentedCustodianOrganizationIdExtension(person.Host);
             //parser.setCDAcustodianAssignedCustodianRepresentedCustodianOrganizationName();

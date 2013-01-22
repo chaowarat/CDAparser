@@ -47,55 +47,17 @@ namespace CDAparser
             {
                 ListBox1.Items.Add(a.typeCode + " " + a.observationCode);
             }
-            //callService();
+            callService();
 
         }
 
         public void callService()
         {
-            try
-            {
-                string content;
-                string Method = "POST";
-                string uri = "http://localhost:64933/Service1.svc/test";
+            ServiceReference1.CasemanagerReceiverClient test = new ServiceReference1.CasemanagerReceiverClient();
 
-                HttpWebRequest req = WebRequest.Create(uri) as HttpWebRequest;
-                req.KeepAlive = false;
-                req.Method = Method.ToUpper();
+            XmlDocument doc = CDAsender.getEducationEvaluationXML("1669800114214", "1", "1");
 
-                string FilePath = HttpContext.Current.Server.MapPath(@"XML/01_CDA_Education_Evaluation.xml");
-                content = (File.OpenText(@FilePath)).ReadToEnd();
-
-                byte[] buffer = Encoding.ASCII.GetBytes(content);
-                req.ContentLength = buffer.Length;
-                req.ContentType = "text/xml";
-                Stream PostData = req.GetRequestStream();
-                PostData.Write(buffer, 0, buffer.Length);
-                PostData.Close();
-
-                HttpWebResponse resp = req.GetResponse() as HttpWebResponse;
-                if (req.HaveResponse == true && resp == null)
-                {
-                    String msg = "response was not returned or is null";
-                    throw new WebException(msg);
-                }
-
-                if (resp.StatusCode != HttpStatusCode.OK)
-                {
-                    String msg = "response with status: " + resp.StatusCode + " " + resp.StatusDescription;
-                    throw new WebException(msg);
-                }
-
-                StreamReader ResponseStream = new StreamReader(resp.GetResponseStream(), Encoding.UTF8);
-                string Response = ResponseStream.ReadToEnd();
-                ResponseStream.Close();
-                resp.Close();
-                Console.WriteLine(Response);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message.ToString());
-            }
+            bool result = test.receiveEducationEvaluation(doc.InnerXml);
         }
 
     }

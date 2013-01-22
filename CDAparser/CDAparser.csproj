@@ -62,7 +62,7 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="SDHS.svc" />
-    <Content Include="Service References\ServiceReference1\WcfService.disco" />
+    <Content Include="Service References\ServiceReference1\CasemanagerReceiver.disco" />
     <Content Include="Service References\ServiceReference1\configuration91.svcinfo" />
     <Content Include="Service References\ServiceReference1\configuration.svcinfo" />
     <Content Include="Service References\ServiceReference1\Reference.svcmap">
@@ -153,9 +153,9 @@
     </None>
     <None Include="Properties\PublishProfiles\serviceTest555 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\serviceTest555 - Web Deploy.pubxml" />
-    <Content Include="Service References\ServiceReference1\WcfService.wsdl" />
-    <None Include="Service References\ServiceReference1\WcfService.xsd" />
-    <None Include="Service References\ServiceReference1\WcfService1.xsd" />
+    <Content Include="Service References\ServiceReference1\CasemanagerReceiver.wsdl" />
+    <None Include="Service References\ServiceReference1\CasemanagerReceiver.xsd" />
+    <None Include="Service References\ServiceReference1\CasemanagerReceiver1.xsd" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
