@@ -78,6 +78,14 @@
     <Content Include="XML\17_CDA_CaseManager_Planning.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Casemanager.cs">
+      <DependentUpon>Casemanager.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Casemanager.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Casemanager.dbml</DependentUpon>
+    </Compile>
     <Compile Include="CDAentryClasses.cs" />
     <Compile Include="CDAparser.cs" />
     <Compile Include="CDAreceiver.cs" />
@@ -120,6 +128,14 @@
       <LastGenOutput>Education.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Casemanager.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Casemanager.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Casemanager.dbml.layout">
+      <DependentUpon>Casemanager.dbml</DependentUpon>
+    </None>
     <None Include="Education.dbml.layout">
       <DependentUpon>Education.dbml</DependentUpon>
     </None>

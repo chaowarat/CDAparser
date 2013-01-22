@@ -38,14 +38,33 @@ namespace CDAparser
             return CDAsender.getEducationDevelopmentXML(cid, planNo, caseNo).DocumentElement;
         }
 
-        public XmlElement getEducationProfile(string cid, string planNo, string caseNo)
+        public XmlElement getEducationProfile(string cid)
         {
-            return CDAsender.getEducationProfileXML(cid, planNo, caseNo).DocumentElement;
+            return CDAsender.getEducationProfileXML(cid).DocumentElement;
         }
 
         public XmlElement getEducationMilk()
         {
             return CDAsender.getEducationMilkXML().DocumentElement;
+        }
+
+        ///////////////////////////////////
+        //// casemanager
+        ///////////////////////////////////
+
+        public XmlElement getCasemanagerProfile(string cid)
+        {
+            return CDAsender.getCasemanagerProfileXML(cid).DocumentElement;
+        }
+
+        public XmlElement getCasemanagerQuestionare(string cid, string planNo)
+        {
+            return CDAsender.getCasemanagerQuestionareXML(cid, planNo).DocumentElement;
+        }
+
+        public XmlElement getCasemanagerPlanning(string cid, string planNo)
+        {
+            return CDAsender.getCasemanagerPlanningXML(cid, planNo).DocumentElement;
         }
 
     }

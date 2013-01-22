@@ -30,12 +30,28 @@ namespace CDAparser
         XmlElement getEducationDevelopment(string cid, string planNo, string caseNo);
 
         [OperationContract]
-        [WebGet(UriTemplate = "/getEducationProfile?cid={cid}&planNo={planNo}&caseNo={caseNo}")]
-        XmlElement getEducationProfile(string cid, string planNo, string caseNo);
+        [WebGet(UriTemplate = "/getEducationProfile?cid={cid}")]
+        XmlElement getEducationProfile(string cid);
 
         [OperationContract]
         [WebGet(UriTemplate = "/getEducationMilk")]
         XmlElement getEducationMilk();
+
+        /////////////////////////////////////////////////////////////
+        //// Casemanager
+        /////////////////////////////////////////////////////////////
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/getCasemanagerProfile?cid={cid}")]
+        XmlElement getCasemanagerProfile(string cid);
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/getCasemanagerQuestionare?cid={cid}&planNo={planNo}")]
+        XmlElement getCasemanagerQuestionare(string cid, string planNo);
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/getCasemanagerPlanning?cid={cid}&planNo={planNo}")]
+        XmlElement getCasemanagerPlanning(string cid, string planNo);
 
         //[OperationContract]
         //[WebInvoke(UriTemplate = "", Method = "POST")]

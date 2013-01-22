@@ -78,28 +78,6 @@
   
 		<component>
 			<planNumber planNumber="3"/>
-			<!--ยกตัวอย่างมาแค่ 2 คำถามน่ะ-->
-			<section code="CA002" displayName="แบบสอบถามจาก Case Manager">
 			
-				<entry typeCode="DRIV">
-					<observation classCode="OBS" moodCode="RQO">
-						<code localCode="" code="B110" codeSystem="2.16.840.1.113883.6.500" displayName="ท่านมีปัญหาในการตอบสนองกับสิ่งกระตุ้น หรือการรู้สึกตัว หรือไม่"/> 
-						<value code="0"/> <!--คำตอบของ Questionare -->
-						<effectiveTime>
-							<center value="20120429"/>
-						</effectiveTime>
-					</observation>
-				</entry>	
-				
-				<entry typeCode="DRIV">
-					<observation classCode="OBS" moodCode="RQO">
-						<code localCode="" code="B110" codeSystem="2.16.840.1.113883.6.500" displayName="ท่านมีปัญหาเกี่ยวกับการทำกิจกรรมที่ใช้ความคิด หรือไม่"/> 
-						<value code="8"/> <!--คำตอบของ Questionare -->
-						<effectiveTime>
-							<center value="20120429"/>
-						</effectiveTime>
-					</observation>
-				</entry>	
-			</section>
 		</component>
  </ClinicalDocument>

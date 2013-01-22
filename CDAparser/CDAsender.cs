@@ -14,8 +14,11 @@ namespace CDAparser
         /// getEducationDevelopmentXML -- observationEffectiveTimeCenterValue
         /// รอพี่รงค์ แก้ดาต้าเบส
         /// </summary>
-        static string dateTimeFormat = "yyyyMMdd";
+        
         static EducationDataContext education = new EducationDataContext();
+        static CDAparserCS.CasemanagerDataContext casemanager = new CDAparserCS.CasemanagerDataContext();
+
+        static string dateTimeFormat = "yyyyMMdd";
         static string appPath = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
         static string educationEvaluationXml = Path.Combine(appPath, @"XML/01_CDA_Education_Evaluation.xml");
         static string educationPlanningXml = Path.Combine(appPath, @"XML/02_CDA_Education_Planning.xml");
@@ -42,12 +45,16 @@ namespace CDAparser
 
             if (cid != null)
             {
-                person = (from a in education.Persons where a.CID.Equals(cid) select a).First();
-                gender = (from a in education.HL7_Gender_Standards where a.GenderCode.Equals(person.Gender) select a).First();
-                staff = (from a in education.Evaluations where a.CID.Equals(cid) select a).First();
+                try
+                {
+                    person = (from a in education.Persons where a.CID.Equals(cid) select a).First();
+                    gender = (from a in education.HL7_Gender_Standards where a.GenderCode.Equals(person.Gender) select a).First();
+                    staff = (from a in education.Evaluations where a.CID.Equals(cid) select a).First();
+                }
+                catch { }
             }
 
-            if (hasRecordTarget)
+            if (hasRecordTarget && person != null && gender != null)
             {
                 parser.setCDArecordTargetPatientRoleIdExtension(cid);
                 parser.setCDArecordTargetPatientRolePatientNameGiven(person.FirstName);
@@ -280,11 +287,9 @@ namespace CDAparser
             return parser.getDocument();
         }
 
-        public static XmlDocument getEducationProfileXML(string cid, string planNo, string caseNo)
+        public static XmlDocument getEducationProfileXML(string cid)
         {
-            CDAparser parser = new CDAparser(initXML(educationProfiletXml, cid, planNo, false));
-            parser.setCDAcomponentPlanNumber(planNo);
-            parser.setCDAcomponentCaseNumber(caseNo);
+            CDAparser parser = new CDAparser(initXML(educationProfiletXml, cid, null, false));
 
             //<section code="ED010" displayName="รายละเอียดการลงทะเบียนเด็กใหม่จากศูนย์การศึกษาพิเศษ">
             Person newPerson = (from a in education.Persons where a.CID.Equals(cid) select a).First();
@@ -400,12 +405,56 @@ namespace CDAparser
         }
         #endregion
 
-        public static XmlDocument getCasemanagerProfileXML(string cid, string planNo)
+        public static XmlDocument getCasemanagerProfileXML(string cid)
         {
-            CDAparser parser = new CDAparser(initXML(CasemanagerProfileXml, cid, planNo, false));
-            //parser.setCDAcomponentPlanNumber();
-            //parser.setCDAcomponentCaseNumber();
-            // create component
+            CDAparser parser = new CDAparser(initXML(CasemanagerProfileXml, cid, null, false));
+
+            //<section code="CA001" displayName="ข้อมูลลงทะเบียนจาก Case Manager">
+            Person newPerson = (from a in education.Persons where a.CID.Equals(cid) select a).First();
+            List<CDAEntryOfProfile> profileList = new List<CDAEntryOfProfile>();
+            CDAEntryOfProfile profile = new CDAEntryOfProfile();
+            profile.recordTargetpPatientRoleIdExtension = newPerson.CID != null ? newPerson.CID.Trim() : "";
+            profile.recordTargetpPatientRoleAddrLiveHomeStatus = newPerson.LiveHomeStatus != null ? newPerson.LiveHomeStatus.Trim() : "";
+            profile.recordTargetpPatientRoleAddrLiveHouseNumber = newPerson.LiveHouseNumber != null ? newPerson.LiveHouseNumber.Trim() : "";
+            profile.recordTargetpPatientRoleAddrLiveMooNumber = newPerson.LiveMooNumber != null ? newPerson.LiveMooNumber.Trim() : "";
+            profile.recordTargetpPatientRoleAddrLiveVillageName = newPerson.LiveVillageName != null ? newPerson.LiveVillageName.Trim() : "";
+            profile.recordTargetpPatientRoleAddrLiveAlley = newPerson.LiveAlley != null ? newPerson.LiveAlley.Trim() : "";
+            profile.recordTargetpPatientRoleAddrLiveStreetName = newPerson.LiveStreetName != null ? newPerson.LiveStreetName.Trim() : "";
+            profile.recordTargetpPatientRoleAddrLiveTumbon = newPerson.LiveTumbon != null ? newPerson.LiveTumbon.Trim() : "";
+            profile.recordTargetpPatientRoleAddrLiveCity = newPerson.LiveCity != null ? newPerson.LiveCity.Trim() : "";
+            profile.recordTargetpPatientRoleAddrLiveProvince = newPerson.LiveProvince != null ? newPerson.LiveProvince.Trim() : "";
+            profile.recordTargetpPatientRoleAddrLivePostCode = newPerson.LivePostCode != null ? newPerson.LivePostCode.Trim() : "";
+            profile.recordTargetpPatientRoleAddrCensusHouseNumber = newPerson.CensusHouseNumber != null ? newPerson.CensusHouseNumber.Trim() : "";
+            profile.recordTargetpPatientRoleAddrCensusMooNumber = newPerson.CensusMooNumber != null ? newPerson.CensusMooNumber.Trim() : "";
+            profile.recordTargetpPatientRoleAddrCensusVillageName = newPerson.CensusVillageName != null ? newPerson.CensusVillageName.Trim() : "";
+            profile.recordTargetpPatientRoleAddrCensusAlley = newPerson.CensusAlley != null ? newPerson.CensusAlley.Trim() : "";
+            profile.recordTargetpPatientRoleAddrCensusStreetName = newPerson.CensusStreetName != null ? newPerson.CensusStreetName.Trim() : "";
+            profile.recordTargetpPatientRoleAddrCensusTumbon = newPerson.CensusTumbon != null ? newPerson.CensusTumbon.Trim() : "";
+            profile.recordTargetpPatientRoleAddrCensusCity = newPerson.CensusCity != null ? newPerson.CensusCity.Trim() : "";
+            profile.recordTargetpPatientRoleAddrCensusProvince = newPerson.CensusProvince != null ? newPerson.CensusProvince.Trim() : "";
+            profile.recordTargetpPatientRoleAddrCensusMoveInDate = ((DateTime)newPerson.CensusMoveInDate).ToString(dateTimeFormat, CultureInfo.InvariantCulture);
+            profile.recordTargetpPatientRoleAddrCensusMoveOutDate = ((DateTime)newPerson.CensusMoveOutDate).ToString(dateTimeFormat, CultureInfo.InvariantCulture);
+            profile.recordTargetpPatientRoleAddrCensusMoveOutReason = newPerson.CensusMoveOutReason != null ? newPerson.CensusMoveOutReason.Trim() : "";
+
+            profile.recordTargetpPatientRoleHomePhoneValue = newPerson.HomePhone != null ? newPerson.HomePhone.Trim() : "";
+            profile.recordTargetpPatientRoleMobileValue = newPerson.Mobile != null ? newPerson.Mobile.Trim() : "";
+            profile.recordTargetpPatientRolePatientNameTitle = newPerson.Title != null ? newPerson.Title.Trim() : "";
+            profile.recordTargetpPatientRolePatientNameGiven = newPerson.FirstName != null ? newPerson.FirstName.Trim() : "";
+            profile.recordTargetpPatientRolePatientNameFamily = newPerson.LastName != null ? newPerson.LastName.Trim() : "";
+
+            profile.recordTargetpPatientRolePatientAdministrativeGenderCodeCode = newPerson.Gender != null ? newPerson.Gender.Trim() : "";
+            profile.recordTargetpPatientRolePatientBirthTimeValue = ((DateTime)newPerson.DOB).ToString(dateTimeFormat, CultureInfo.InvariantCulture);
+            profile.recordTargetpPatientRolePatientSubWelfareIDValue = "04";
+            profile.recordTargetpPatientRolePatientBloodTypeValue = newPerson.BloodType != null ? newPerson.BloodType.Trim() : "";
+            profile.recordTargetpPatientRolePatientNationValue = newPerson.Nation != null ? newPerson.Nation.Trim() : "";
+            profile.recordTargetpPatientRolePatientRaceValue = newPerson.Race != null ? newPerson.Race.Trim() : "";
+            profile.recordTargetpPatientRolePatientReligionValue = newPerson.Religion != null ? newPerson.Religion.Trim() : "";
+            profile.recordTargetpPatientRolePatientForeignerValue = newPerson.Foreigner != null ? newPerson.Foreigner.Trim() : "";
+            profile.recordTargetpPatientRolePatientChildPicValue = newPerson.Child_Pic != null ? newPerson.Child_Pic.Trim() : "";
+            profile.recordTargetpPatientRolePatientChildPicCIDValue = newPerson.Child_PicCID != null ? newPerson.Child_PicCID.Trim() : "";
+
+            profileList.Add(profile);
+            parser.setEntryOfProfile(profileList, "CA001", "ข้อมูลลงทะเบียนจาก Case Manager");
 
             return parser.getDocument();
         }
@@ -413,9 +462,24 @@ namespace CDAparser
         public static XmlDocument getCasemanagerQuestionareXML(string cid, string planNo)
         {
             CDAparser parser = new CDAparser(initXML(CasemanagerQuestionareXml, cid, planNo, true));
-            //parser.setCDAcomponentPlanNumber();
-            //parser.setCDAcomponentCaseNumber();
-            // create component
+            parser.setCDAcomponentPlanNumber(planNo);
+
+            //<section code="CA002" displayName="แบบสอบถามจาก Case Manager">
+            var qType = from a in casemanager.Quastionares select a;
+            #region
+            var qEval = from a in casemanager.ResultQuastionares where a.CID.Equals(cid) && a.CaseNumber.Equals(planNo) select a;
+            List<CDAEntry> disEntryList = new List<CDAEntry>();
+            foreach (CDAparserCS.ResultQuastionare q in qEval)
+            {
+                CDAEntry entry = new CDAEntry();
+                entry.observationCode = q.ICFCode != null ? q.ICFCode.Trim() : "";
+                string display = (from a in qType where a.QNCode.Equals(q.ICFCode) select a.QNName).First();
+                entry.observationDisplayName = display;
+                entry.observationEffectiveTimeCenterValue = q.DateTimeUpDate != null ? ((DateTime)q.DateTimeUpDate).ToString(dateTimeFormat, CultureInfo.InvariantCulture) : "";
+                disEntryList.Add(entry);
+            }
+            parser.setEntryList(disEntryList, "CA002", "แบบสอบถามจาก Case Manager");
+            #endregion
 
             return parser.getDocument();
         }
@@ -423,9 +487,24 @@ namespace CDAparser
         public static XmlDocument getCasemanagerPlanningXML(string cid, string planNo)
         {
             CDAparser parser = new CDAparser(initXML(CasemanagerPlanningXml, cid, planNo, true));
-            //parser.setCDAcomponentPlanNumber();
-            //parser.setCDAcomponentCaseNumber();
-            // create component
+            parser.setCDAcomponentPlanNumber(planNo);
+
+            //<section code="CA003" displayName="การวางแผนบริการจาก Case Manager">
+            var svcType = from a in casemanager.Services select a;
+            #region
+            var svcEval = from a in casemanager.PlanServices where a.CID.Equals(cid) && a.CaseNo.Equals(planNo) select a;
+            List<CDAEntry> svcEntryList = new List<CDAEntry>();
+            foreach (CDAparserCS.PlanService svc in svcEval)
+            {
+                CDAEntry entry = new CDAEntry();
+                entry.observationCode = svc.SVCCode != null ? svc.SVCCode.Trim() : "";
+                string display = (from a in svcType where a.SVCCode.Equals(svc.SVCCode) select a.SVCName).First();
+                entry.observationDisplayName = display;
+                entry.observationEffectiveTimeCenterValue = svc.DateTimeUpdate != null ? ((DateTime)svc.DateTimeUpdate).ToString(dateTimeFormat, CultureInfo.InvariantCulture) : "";
+                svcEntryList.Add(entry);
+            }
+            parser.setEntryList(svcEntryList, "CA003", "การวางแผนบริการจาก Case Manager");
+            #endregion
 
             return parser.getDocument();
         }
