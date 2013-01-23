@@ -36,9 +36,9 @@ namespace CDAparser
         {
             CDAparser parser = new CDAparser(path);
             string time = DateTime.Now.ToString(dateTimeFormat, CultureInfo.InvariantCulture);
-            Person person = null;
+            Person person = new Person();
             HL7_Gender_Standard gender = null;
-            Evaluation staff = null;
+            Evaluation staff = new Evaluation();
 
             parser.setCDAeffectiveTime(time);
             parser.setCDAauthorTimeValue(time);
@@ -270,7 +270,10 @@ namespace CDAparser
                 entry.observationLocalCode = plan.SACTCode != null ? plan.SACTCode .Trim() : "";
                 string display = (from a in planEvalType where a.ACTCode.Equals(plan.SACTCode) select a.ACTDesc).First();
                 entry.observationDisplayName = display;
-                entry.observationEffectiveTimeCenterValue = ((DateTime)plan.ExpectedDate).ToString(dateTimeFormat, CultureInfo.InvariantCulture);
+                if (plan.ExpectedDate != null)
+                {
+                    entry.observationEffectiveTimeCenterValue = ((DateTime)plan.ExpectedDate).ToString(dateTimeFormat, CultureInfo.InvariantCulture);
+                }
                 planEntryList.Add(entry);
             }
             parser.setEntryList(planEntryList, "ED007", "การวางแผนการให้บริการจากศูนย์การศึกษาพิเศษ");
@@ -338,7 +341,10 @@ namespace CDAparser
             CDAparser parser = new CDAparser(initXML(educationProfiletXml, cid, null, false));
 
             //<section code="ED010" displayName="รายละเอียดการลงทะเบียนเด็กใหม่จากศูนย์การศึกษาพิเศษ">
+            education = new EducationDataContext();
             Person newPerson = (from a in education.Persons where a.CID.Equals(cid) select a).First();
+            parser.setCDAauthenticatorTimeValue(((DateTime)newPerson.DateTimeUpdate).ToString(dateTimeFormat, CultureInfo.InvariantCulture));
+
             List<CDAEntryOfProfile> profileList = new List<CDAEntryOfProfile>();
             CDAEntryOfProfile profile = new CDAEntryOfProfile();
             profile.recordTargetpPatientRoleIdExtension = newPerson.CID != null ? newPerson.CID .Trim() : "";
@@ -361,7 +367,10 @@ namespace CDAparser
             profile.recordTargetpPatientRoleAddrCensusCity = newPerson.CensusCity != null ? newPerson.CensusCity .Trim() : "";
             profile.recordTargetpPatientRoleAddrCensusProvince = newPerson.CensusProvince != null ? newPerson.CensusProvince .Trim() : "";
             profile.recordTargetpPatientRoleAddrCensusMoveInDate = ((DateTime)newPerson.CensusMoveInDate).ToString(dateTimeFormat, CultureInfo.InvariantCulture);
-            profile.recordTargetpPatientRoleAddrCensusMoveOutDate = ((DateTime)newPerson.CensusMoveOutDate).ToString(dateTimeFormat, CultureInfo.InvariantCulture);
+            if (newPerson.CensusMoveOutDate != null)
+            {
+                profile.recordTargetpPatientRoleAddrCensusMoveOutDate = ((DateTime)newPerson.CensusMoveOutDate).ToString(dateTimeFormat, CultureInfo.InvariantCulture);
+            }
             profile.recordTargetpPatientRoleAddrCensusMoveOutReason = newPerson.CensusMoveOutReason != null ? newPerson.CensusMoveOutReason .Trim() : "";
 
             profile.recordTargetpPatientRoleHomePhoneValue = newPerson.HomePhone != null ? newPerson.HomePhone .Trim() : "";

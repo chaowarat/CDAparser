@@ -1063,6 +1063,7 @@ namespace CDAparser
             List<string> typeCode = getInnerTextMultiple(section + "entry/@typeCode");
             List<string> observationClassCode = getInnerTextMultiple(section + "entry/observation/@classCode");
             List<string> observationMoodCode = getInnerTextMultiple(section + "entry/observation/@moodCode");
+            List<string> observationLocalCode = getInnerTextMultiple(section + "entry/observation/code/@localCode");
             List<string> observationCode = getInnerTextMultiple(section + "entry/observation/code/@code");
             List<string> observationCodeSystem = getInnerTextMultiple(section + "entry/observation/code/@codeSystem");
             List<string> observationDisplayName = getInnerTextMultiple(section + "entry/observation/code/@displayName");
@@ -1074,6 +1075,7 @@ namespace CDAparser
                 entry.typeCode = typeCode[i];
                 entry.observationClassCode = observationClassCode[i];
                 entry.observationMoodCode = observationMoodCode[i];
+                entry.observationLocalCode = observationLocalCode[i];
                 entry.observationCode = observationCode[i];
                 entry.observationCodeSystem = observationCodeSystem[i];
                 entry.observationDisplayName = observationDisplayName[i];
@@ -1103,6 +1105,7 @@ namespace CDAparser
                                 new XAttribute("classCode", entry.observationClassCode),
                                 new XAttribute("moodCode", entry.observationMoodCode),
                             new XElement("code",
+                                new XAttribute("localCode", entry.observationLocalCode),
                                 new XAttribute("code", entry.observationCode),
                                 new XAttribute("codeSystem", entry.observationCodeSystem),
                                 new XAttribute("displayName", entry.observationDisplayName)),

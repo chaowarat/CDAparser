@@ -12,16 +12,54 @@
   <wsdl:message name="ICasemanagerReceiver_receiveEducationEvaluation_OutputMessage">
     <wsdl:part name="parameters" element="tns:receiveEducationEvaluationResponse" />
   </wsdl:message>
+  <wsdl:message name="ICasemanagerReceiver_receiveProfile_InputMessage">
+    <wsdl:part name="parameters" element="tns:receiveProfile" />
+  </wsdl:message>
+  <wsdl:message name="ICasemanagerReceiver_receiveProfile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:receiveProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICasemanagerReceiver_receiveEducationPlannings_InputMessage">
+    <wsdl:part name="parameters" element="tns:receiveEducationPlannings" />
+  </wsdl:message>
+  <wsdl:message name="ICasemanagerReceiver_receiveEducationPlannings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:receiveEducationPlanningsResponse" />
+  </wsdl:message>
   <wsdl:portType name="ICasemanagerReceiver">
     <wsdl:operation name="receiveEducationEvaluation">
       <wsdl:input wsaw:Action="http://tempuri.org/ICasemanagerReceiver/receiveEducationEvaluation" message="tns:ICasemanagerReceiver_receiveEducationEvaluation_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICasemanagerReceiver/receiveEducationEvaluationResponse" message="tns:ICasemanagerReceiver_receiveEducationEvaluation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="receiveProfile">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICasemanagerReceiver/receiveProfile" message="tns:ICasemanagerReceiver_receiveProfile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICasemanagerReceiver/receiveProfileResponse" message="tns:ICasemanagerReceiver_receiveProfile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="receiveEducationPlannings">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICasemanagerReceiver/receiveEducationPlannings" message="tns:ICasemanagerReceiver_receiveEducationPlannings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICasemanagerReceiver/receiveEducationPlanningsResponse" message="tns:ICasemanagerReceiver_receiveEducationPlannings_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ICasemanagerReceiver" type="tns:ICasemanagerReceiver">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="receiveEducationEvaluation">
       <soap:operation soapAction="http://tempuri.org/ICasemanagerReceiver/receiveEducationEvaluation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="receiveProfile">
+      <soap:operation soapAction="http://tempuri.org/ICasemanagerReceiver/receiveProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="receiveEducationPlannings">
+      <soap:operation soapAction="http://tempuri.org/ICasemanagerReceiver/receiveEducationPlannings" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

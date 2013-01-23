@@ -55,9 +55,9 @@ namespace CDAparser
         {
             ServiceReference1.CasemanagerReceiverClient test = new ServiceReference1.CasemanagerReceiverClient();
 
-            XmlDocument doc = CDAsender.getEducationEvaluationXML("1669800114214", "1", "1");
+            XmlDocument doc = CDAsender.getEducationPlanningXML("1669800114214", "", "10");
 
-            bool result = test.receiveEducationEvaluation(doc.InnerXml);
+            bool result = test.receiveEducationPlannings(doc.InnerXml);
         }
 
     }

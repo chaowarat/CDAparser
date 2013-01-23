@@ -17,6 +17,12 @@ namespace CDAparser.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICasemanagerReceiver/receiveEducationEvaluation", ReplyAction="http://tempuri.org/ICasemanagerReceiver/receiveEducationEvaluationResponse")]
         bool receiveEducationEvaluation(string data);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICasemanagerReceiver/receiveProfile", ReplyAction="http://tempuri.org/ICasemanagerReceiver/receiveProfileResponse")]
+        bool receiveProfile(string data);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICasemanagerReceiver/receiveEducationPlannings", ReplyAction="http://tempuri.org/ICasemanagerReceiver/receiveEducationPlanningsResponse")]
+        bool receiveEducationPlannings(string data);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -48,6 +54,14 @@ namespace CDAparser.ServiceReference1 {
         
         public bool receiveEducationEvaluation(string data) {
             return base.Channel.receiveEducationEvaluation(data);
+        }
+        
+        public bool receiveProfile(string data) {
+            return base.Channel.receiveProfile(data);
+        }
+        
+        public bool receiveEducationPlannings(string data) {
+            return base.Channel.receiveEducationPlannings(data);
         }
     }
 }
