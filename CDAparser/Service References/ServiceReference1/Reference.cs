@@ -23,6 +23,24 @@ namespace CDAparser.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICasemanagerReceiver/receiveEducationPlannings", ReplyAction="http://tempuri.org/ICasemanagerReceiver/receiveEducationPlanningsResponse")]
         bool receiveEducationPlannings(string data);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICasemanagerReceiver/receiveProfileMilk", ReplyAction="http://tempuri.org/ICasemanagerReceiver/receiveProfileMilkResponse")]
+        bool receiveProfileMilk(string data);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICasemanagerReceiver/receiveServiceProvisionEducation", ReplyAction="http://tempuri.org/ICasemanagerReceiver/receiveServiceProvisionEducationResponse")]
+        bool receiveServiceProvisionEducation(string data);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICasemanagerReceiver/getCasemanagerProfile", ReplyAction="http://tempuri.org/ICasemanagerReceiver/getCasemanagerProfileResponse")]
+        string getCasemanagerProfile(string cid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICasemanagerReceiver/getCasemanagerQuestionare", ReplyAction="http://tempuri.org/ICasemanagerReceiver/getCasemanagerQuestionareResponse")]
+        string getCasemanagerQuestionare(string cid, string planNo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICasemanagerReceiver/getCasemanagerPlanning", ReplyAction="http://tempuri.org/ICasemanagerReceiver/getCasemanagerPlanningResponse")]
+        string getCasemanagerPlanning(string cid, string planNo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICasemanagerReceiver/getProfileList", ReplyAction="http://tempuri.org/ICasemanagerReceiver/getProfileListResponse")]
+        string[] getProfileList();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -62,6 +80,30 @@ namespace CDAparser.ServiceReference1 {
         
         public bool receiveEducationPlannings(string data) {
             return base.Channel.receiveEducationPlannings(data);
+        }
+        
+        public bool receiveProfileMilk(string data) {
+            return base.Channel.receiveProfileMilk(data);
+        }
+        
+        public bool receiveServiceProvisionEducation(string data) {
+            return base.Channel.receiveServiceProvisionEducation(data);
+        }
+        
+        public string getCasemanagerProfile(string cid) {
+            return base.Channel.getCasemanagerProfile(cid);
+        }
+        
+        public string getCasemanagerQuestionare(string cid, string planNo) {
+            return base.Channel.getCasemanagerQuestionare(cid, planNo);
+        }
+        
+        public string getCasemanagerPlanning(string cid, string planNo) {
+            return base.Channel.getCasemanagerPlanning(cid, planNo);
+        }
+        
+        public string[] getProfileList() {
+            return base.Channel.getProfileList();
         }
     }
 }

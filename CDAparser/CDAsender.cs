@@ -488,7 +488,11 @@ namespace CDAparser
             profile.recordTargetpPatientRoleAddrCensusCity = newPerson.CensusCity != null ? newPerson.CensusCity.Trim() : "";
             profile.recordTargetpPatientRoleAddrCensusProvince = newPerson.CensusProvince != null ? newPerson.CensusProvince.Trim() : "";
             profile.recordTargetpPatientRoleAddrCensusMoveInDate = ((DateTime)newPerson.CensusMoveInDate).ToString(dateTimeFormat, CultureInfo.InvariantCulture);
-            profile.recordTargetpPatientRoleAddrCensusMoveOutDate = ((DateTime)newPerson.CensusMoveOutDate).ToString(dateTimeFormat, CultureInfo.InvariantCulture);
+            try
+            {
+                profile.recordTargetpPatientRoleAddrCensusMoveOutDate = ((DateTime)newPerson.CensusMoveOutDate).ToString(dateTimeFormat, CultureInfo.InvariantCulture);
+            }
+            catch { }
             profile.recordTargetpPatientRoleAddrCensusMoveOutReason = newPerson.CensusMoveOutReason != null ? newPerson.CensusMoveOutReason.Trim() : "";
 
             profile.recordTargetpPatientRoleHomePhoneValue = newPerson.HomePhone != null ? newPerson.HomePhone.Trim() : "";

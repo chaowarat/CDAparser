@@ -17,6 +17,7 @@ namespace CDAparser
         public string observationClassCode { get; set; }
         public string observationMoodCode { get; set; }
         public string observationCode { get; set; }
+        public string observationValueCode { get; set; }
         public string observationLocalCode { get; set; }
         public string observationCodeSystem { get; set; }
         public string observationDisplayName { get; set; }
@@ -27,6 +28,7 @@ namespace CDAparser
             this.typeCode = "DRIV";
             this.observationClassCode = "OBS";
             this.observationMoodCode = "RQO";
+            this.observationValueCode = "";
             this.observationCode = ".......";
             this.observationLocalCode = ".......";
             this.observationCodeSystem = "2.16.840.1.113883.6.96";
@@ -36,7 +38,7 @@ namespace CDAparser
 
         public XmlElement getXMLelement(XmlDocument document)
         {
-            XElement entry =new XElement("entry",
+            XElement entry = new XElement("entry",
                                 new XAttribute("typeCode", this.typeCode),
                             new XElement("observation",
                                 new XAttribute("classCode", this.observationClassCode),
@@ -46,9 +48,11 @@ namespace CDAparser
                                 new XAttribute("code", this.observationCode),
                                 new XAttribute("codeSystem", this.observationCodeSystem),
                                 new XAttribute("displayName", this.observationDisplayName)),
+                            new XElement("value",
+                                new XAttribute("code", this.observationValueCode)),
                             new XElement("effectiveTime",
                                 new XElement("center",
-                                    new XAttribute("value", this.observationEffectiveTimeCenterValue))    
+                                    new XAttribute("value", this.observationEffectiveTimeCenterValue))
                             )
                         )
                     );
@@ -116,7 +120,7 @@ namespace CDAparser
                                     new XAttribute("codeSystemName", this.patientAdministrativeGenderCodeSystemName),
                                     new XAttribute("displayName", this.patientAdministrativeGenderDisplayName)),
                                 new XElement("birthTime",
-                                     new XAttribute("value", this.patientBirthTimeValue))                                
+                                     new XAttribute("value", this.patientBirthTimeValue))
                             )
                         );
             return toXmlElement(entry, document);
@@ -128,8 +132,9 @@ namespace CDAparser
         }
     }
 
-    
-    public class CDAEntryOfProfile{
+
+    public class CDAEntryOfProfile
+    {
         public string typeCode { get; set; }
         public string recordTargetpPatientRoleIdExtension { get; set; }
         public string recordTargetpPatientRoleIdRoot { get; set; }

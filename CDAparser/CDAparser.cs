@@ -738,7 +738,7 @@ namespace CDAparser
         {
             setInnerTextSingle(CDAlegalAuthenticatorAssignedEntityHostTypeExtension, value);
         }
-        
+
         public string getCDAlegalAuthenticatorAssignedEntityAssignedPersonNameGiven()
         {
             return getInnerTextSingle(CDAlegalAuthenticatorAssignedEntityAssignedPersonNameGiven);
@@ -1065,6 +1065,7 @@ namespace CDAparser
             List<string> observationMoodCode = getInnerTextMultiple(section + "entry/observation/@moodCode");
             List<string> observationLocalCode = getInnerTextMultiple(section + "entry/observation/code/@localCode");
             List<string> observationCode = getInnerTextMultiple(section + "entry/observation/code/@code");
+            List<string> observationValueCode = getInnerTextMultiple(section + "entry/observation/value/@code");
             List<string> observationCodeSystem = getInnerTextMultiple(section + "entry/observation/code/@codeSystem");
             List<string> observationDisplayName = getInnerTextMultiple(section + "entry/observation/code/@displayName");
             List<string> observationEffectiveTimeCenterValue = getInnerTextMultiple(section + "entry/observation/effectiveTime/center/@value");
@@ -1077,6 +1078,7 @@ namespace CDAparser
                 entry.observationMoodCode = observationMoodCode[i];
                 entry.observationLocalCode = observationLocalCode[i];
                 entry.observationCode = observationCode[i];
+                entry.observationValueCode = observationValueCode[i];
                 entry.observationCodeSystem = observationCodeSystem[i];
                 entry.observationDisplayName = observationDisplayName[i];
                 entry.observationEffectiveTimeCenterValue = observationEffectiveTimeCenterValue[i];
@@ -1097,7 +1099,7 @@ namespace CDAparser
             section.SetAttribute("code", sectionCode);
             section.SetAttribute("displayName", displayName);
 
-            foreach(CDAEntry entry in list)
+            foreach (CDAEntry entry in list)
             {
                 XElement en = new XElement("entry",
                                 new XAttribute("typeCode", entry.typeCode),
@@ -1109,6 +1111,8 @@ namespace CDAparser
                                 new XAttribute("code", entry.observationCode),
                                 new XAttribute("codeSystem", entry.observationCodeSystem),
                                 new XAttribute("displayName", entry.observationDisplayName)),
+                            new XElement("value",
+                                new XAttribute("code", entry.observationValueCode)),
                             new XElement("effectiveTime",
                                 new XElement("center",
                                     new XAttribute("value", entry.observationEffectiveTimeCenterValue))

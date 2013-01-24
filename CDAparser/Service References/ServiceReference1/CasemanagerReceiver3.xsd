@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://casemanagertest.azurewebsites.net/CasemanagerReceiver.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="receiveEducationEvaluation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="data" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="receiveEducationEvaluationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="receiveEducationEvaluationResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="receiveProfile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="data" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="receiveProfileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="receiveProfileResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="receiveEducationPlannings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="data" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="receiveEducationPlanningsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="receiveEducationPlanningsResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="receiveProfileMilk">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="data" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="receiveProfileMilkResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="receiveProfileMilkResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="receiveServiceProvisionEducation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="data" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="receiveServiceProvisionEducationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="receiveServiceProvisionEducationResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getCasemanagerProfile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getCasemanagerProfileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getCasemanagerProfileResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getCasemanagerQuestionare">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="planNo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getCasemanagerQuestionareResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getCasemanagerQuestionareResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getCasemanagerPlanning">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="planNo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getCasemanagerPlanningResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getCasemanagerPlanningResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getProfileList">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getProfileListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="getProfileListResult" nillable="true" type="q1:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

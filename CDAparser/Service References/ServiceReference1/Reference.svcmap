@@ -18,13 +18,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:61411/CasemanagerReceiver.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://casemanagertest.azurewebsites.net/CasemanagerReceiver.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="CasemanagerReceiver.xsd" MetadataType="Schema" ID="a98b6652-1a26-42cb-85f2-3a8112aeb75e" SourceId="1" SourceUrl="http://localhost:61411/CasemanagerReceiver.svc?xsd=xsd1" />
-    <MetadataFile FileName="CasemanagerReceiver1.xsd" MetadataType="Schema" ID="5f019a73-5346-4f40-865e-2205e3d266d4" SourceId="1" SourceUrl="http://localhost:61411/CasemanagerReceiver.svc?xsd=xsd0" />
-    <MetadataFile FileName="CasemanagerReceiver.wsdl" MetadataType="Wsdl" ID="a2eb55a8-8a35-4ed1-8d0f-d7069d57edbf" SourceId="1" SourceUrl="http://localhost:61411/CasemanagerReceiver.svc?wsdl" />
-    <MetadataFile FileName="CasemanagerReceiver.disco" MetadataType="Disco" ID="e730a415-057c-45b0-9181-8568b59a88d2" SourceId="1" SourceUrl="http://localhost:61411/CasemanagerReceiver.svc?disco" />
+    <MetadataFile FileName="CasemanagerReceiver3.xsd" MetadataType="Schema" ID="47ce7d28-eca5-4bca-b6c7-32b70be99c1a" SourceId="1" SourceUrl="http://casemanagertest.azurewebsites.net/CasemanagerReceiver.svc?xsd=xsd0" />
+    <MetadataFile FileName="CasemanagerReceiver31.xsd" MetadataType="Schema" ID="b7e34df8-3d28-46e4-bbe7-97b64ce986ef" SourceId="1" SourceUrl="http://casemanagertest.azurewebsites.net/CasemanagerReceiver.svc?xsd=xsd1" />
+    <MetadataFile FileName="CasemanagerReceiver1.disco" MetadataType="Disco" ID="439e0c3b-e910-433e-a629-b4af8707b18e" SourceId="1" SourceUrl="http://casemanagertest.azurewebsites.net/CasemanagerReceiver.svc?disco" />
+    <MetadataFile FileName="CasemanagerReceiver32.xsd" MetadataType="Schema" ID="c63a7783-5515-485e-b908-fd672f2ec059" SourceId="1" SourceUrl="http://casemanagertest.azurewebsites.net/CasemanagerReceiver.svc?xsd=xsd2" />
+    <MetadataFile FileName="CasemanagerReceiver1.wsdl" MetadataType="Wsdl" ID="7fc334eb-4882-4a68-9587-3ff1f1fcb27e" SourceId="1" SourceUrl="http://casemanagertest.azurewebsites.net/CasemanagerReceiver.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -55,9 +55,9 @@ namespace CDAparser
         {
             ServiceReference1.CasemanagerReceiverClient test = new ServiceReference1.CasemanagerReceiverClient();
 
-            XmlDocument doc = CDAsender.getEducationPlanningXML("1669800114214", "", "10");
-
-            bool result = test.receiveEducationPlannings(doc.InnerXml);
+            //XmlDocument doc = CDAsender.getCasemanagerProfileXML("2679900019289");
+            //string a = test.getCasemanagerProfile("2679900019289");
+            string[] result = test.getProfileList();
         }
 
     }
